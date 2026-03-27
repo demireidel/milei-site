@@ -346,6 +346,13 @@
   .text-before { color: var(--color-text-before); }
   .text-after { color: var(--color-text-after); }
 
+  /* Page header offset — aligns with sidebar content on desktop */
+  @media (min-width: 1024px) {
+    :root {
+      --header-offset: calc(14rem + 3rem);
+    }
+  }
+
   /* Page eyebrow — section label above h1 */
   .page-eyebrow {
     font-family: var(--font-accent);
