@@ -75,9 +75,12 @@ export function PageHeader({
           />
         </>
       )}
-      <Container className={backgroundImage ? "relative z-10" : ""}>
-      {/* Force light-on-dark text for pages with background images */}
-      <div className={backgroundImage ? "section-light-text" : undefined} style={{ marginLeft: "var(--header-offset, 0)" }}>
+      <Container wide className={backgroundImage ? "relative z-10" : ""}>
+      <div className="flex gap-12">
+        {/* Spacer matching sidebar width on desktop */}
+        <div className="hidden w-[17.5rem] shrink-0 lg:block" aria-hidden="true" />
+        {/* Force light-on-dark text for pages with background images */}
+        <div className={backgroundImage ? "section-light-text" : undefined}>
         {/* Eyebrow — slide in from right */}
         <p
           className="page-eyebrow"
@@ -159,6 +162,7 @@ export function PageHeader({
           </p>
         )}
         {children}
+      </div>
       </div>
       </Container>
     </section>

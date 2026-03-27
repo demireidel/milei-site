@@ -346,13 +346,6 @@
   .text-before { color: var(--color-text-before); }
   .text-after { color: var(--color-text-after); }
 
-  /* Page header offset — aligns with sidebar content on desktop */
-  @media (min-width: 1024px) {
-    :root {
-      --header-offset: calc(14rem + 3rem);
-    }
-  }
-
   /* Page eyebrow — section label above h1 */
   .page-eyebrow {
     font-family: var(--font-accent);
@@ -386,7 +379,8 @@
     position: sticky;
     top: calc(var(--height-nav) + 2rem);
     align-self: flex-start;
-    min-width: 14rem;
+    width: 17.5rem;
+    flex-shrink: 0;
   }
 
   /* Sidebar nav item (inactive) */
@@ -416,6 +410,8 @@
     background: var(--color-surface-1);
   }
 }
+
+/* ── Page header offset (aligns with sidebar content on desktop) ── */
 
 /* ══════════════════════════════════════════════════════════════
    Base Styles
