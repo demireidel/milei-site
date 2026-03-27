@@ -151,7 +151,8 @@ export default function RootLayout({
       lang="es"
       className={`${fraunces.variable} ${oswald.variable} ${inter.variable}`}
     >
-      <head>
+      <head suppressHydrationWarning />
+      <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
@@ -160,8 +161,6 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
-      </head>
-      <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

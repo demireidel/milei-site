@@ -354,7 +354,6 @@
     text-transform: uppercase;
     letter-spacing: 0.15em;
     margin-bottom: var(--spacing-sm);
-    text-align: right;
   }
 
   /* Page title — main h1 */
@@ -364,7 +363,6 @@
     color: var(--color-text-primary);
     line-height: 1.05;
     margin: 0;
-    text-align: right;
   }
 
   /* Page subtitle — description under h1 */
@@ -374,8 +372,6 @@
     line-height: 1.6;
     max-width: 52ch;
     margin-top: var(--spacing-md);
-    text-align: right;
-    margin-left: auto;
   }
 
   /* Sidebar nav container */
@@ -597,7 +593,6 @@ html {
   background: var(--color-gold);
   border-radius: 1px;
   margin-bottom: 1.25rem;
-  margin-left: auto;
 }
 
 /* ── Link Slide — animated underline on hover ─────────────── */
