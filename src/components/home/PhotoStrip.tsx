@@ -157,7 +157,7 @@ export function PhotoStrip({ photos, direction }: PhotoStripProps) {
             height={280}
             draggable={false}
             className="h-[clamp(8rem,6rem+8vw,14rem)] w-auto rounded-md object-cover"
-            sizes="(max-width: 768px) 200px, 300px"
+            sizes="(max-width: 640px) 40vw, 300px"
           />
         ))}
       </div>

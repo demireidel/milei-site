@@ -1,6 +1,25 @@
 /* ── Tailwind ─────────────────────────────────────────────── */
 @import "tailwindcss";
 
+/*
+ * ── CSS Custom Properties Reference ──────────────────
+ *
+ * Timing:
+ *   --duration-fast:    150ms   Quick micro-interactions
+ *   --duration-normal:  300ms   Standard transitions
+ *   --duration-slow:    600ms   Entrance animations
+ *
+ * Easing:
+ *   --ease-standard:    cubic-bezier(0.2, 0, 0, 1)      General purpose
+ *   --ease-decelerate:  cubic-bezier(0, 0, 0, 1)        Entrances
+ *   --ease-out-expo:    cubic-bezier(0.16, 1, 0.3, 1)   Dramatic reveals
+ *
+ * Layout:
+ *   --height-nav:       3.5rem  Navigation bar height
+ *   --width-content:    80rem   Max content width
+ *   --width-narrow:     52rem   Narrow content column
+ */
+
 /* ══════════════════════════════════════════════════════════════
    Design Tokens — Single Source of Truth
    Presidential Website — Javier Milei
@@ -815,4 +834,26 @@ body::after {
   background: linear-gradient(to right, transparent, var(--color-gold), transparent);
   transform: scaleX(0);
   transform-origin: center;
+}
+
+/* ── Animation utilities ─────────────────────────────────── */
+
+.animate-entrance-fade {
+  transition: opacity 600ms var(--ease-out-expo), transform 600ms var(--ease-out-expo);
+}
+
+.animate-entrance-clip {
+  transition: clip-path 800ms var(--ease-out-expo);
+}
+
+.animate-entrance-clip-slow {
+  transition: clip-path 900ms var(--ease-out-expo);
+}
+
+.animate-entrance-scale {
+  transition: transform 800ms var(--ease-out-expo);
+}
+
+.animate-entrance-divider {
+  transition: transform 700ms var(--ease-out-expo);
 }

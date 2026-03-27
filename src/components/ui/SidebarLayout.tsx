@@ -25,7 +25,8 @@ export function SidebarLayout({
   variant = "dark",
   children,
 }: SidebarLayoutProps) {
-  const sectionIds = useMemo(() => items.map((item) => item.id), [items]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const sectionIds = useMemo(() => items.map((item) => item.id), [items.map((i) => i.id).join(",")]);
   const active = useSectionObserver(sectionIds);
 
   const bg = variant === "navy" ? "bg-navy" : "bg-dark";

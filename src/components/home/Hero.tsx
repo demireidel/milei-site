@@ -82,11 +82,10 @@ export function Hero() {
 
       {/* Gold accent line at top */}
       <div
-        className="absolute inset-x-0 top-0 h-0.5 bg-gold"
+        className="animate-entrance-scale absolute inset-x-0 top-0 h-0.5 bg-gold"
         style={{
           transform: shown || step >= 1 ? "scaleX(1)" : "scaleX(0)",
           transformOrigin: "center",
-          transition: "transform 800ms var(--ease-out-expo)",
         }}
       />
 
@@ -140,11 +139,10 @@ export function Hero() {
 
         {/* Gold divider — expands from center */}
         <div
-          className="mx-auto mb-5 mt-7 h-px w-20 bg-gold"
+          className="animate-entrance-divider mx-auto mb-5 mt-7 h-px w-20 bg-gold"
           style={{
             transform: shown || step >= 5 ? "scaleX(1)" : "scaleX(0)",
             transformOrigin: "center",
-            transition: "transform 700ms var(--ease-out-expo)",
           }}
         />
 

@@ -20,6 +20,7 @@ export function PhotoGallery({ photos }: PhotoGalleryProps) {
               height={300}
               className="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-105"
               style={{ objectPosition: photo.pos }}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               loading="lazy"
             />
             <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/80 via-black/20 to-transparent p-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
