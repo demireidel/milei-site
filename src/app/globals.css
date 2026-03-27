@@ -1,0 +1,818 @@
+/* ── Tailwind ─────────────────────────────────────────────── */
+@import "tailwindcss";
+
+/* ══════════════════════════════════════════════════════════════
+   Design Tokens — Single Source of Truth
+   Presidential Website — Javier Milei
+   All design decisions as Tailwind @theme tokens.
+   ══════════════════════════════════════════════════════════════ */
+@theme {
+  /* ── Font Families ─────────────────────────────────────────
+     Loaded via next/font/local in layout.tsx.
+     CSS vars --font-fraunces, --font-oswald, --font-inter
+     are set on <html> by Next.js at build time. */
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-accent: var(--font-oswald), Impact, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+
+  /* ── Core Colors (oklch) ───────────────────────────────── */
+  --color-gold: oklch(0.55 0.17 75);
+  --color-celeste: oklch(0.55 0.11 240);
+  --color-dark: oklch(0.97 0.005 80);
+  --color-navy: oklch(0.91 0.012 250);
+  --color-cream: #1a1a2e;
+
+  /* Hex fallbacks (OG images, scrollbar, etc.) */
+  --color-gold-hex: #b8860b;
+  --color-celeste-hex: #3a7abf;
+  --color-dark-hex: #f5f2ed;
+  --color-navy-hex: #e8eaf0;
+
+  /* ── Party Colors (La Libertad Avanza) ─────────────────── */
+  --color-lla-violet: #743BBC;
+  --color-lla-deep: #280071;
+  --color-lla-indigo: #250E62;
+
+  /* ── Semantic Colors ───────────────────────────────────── */
+  --color-success: #51cf66;
+  --color-danger: #ff6b6b;
+
+  /* ── Surface System (light layers) ──────────────────────── */
+  --color-surface-1: oklch(0 0 0 / 0.03);
+  --color-surface-2: oklch(0 0 0 / 0.05);
+  --color-surface-3: oklch(0 0 0 / 0.08);
+  --color-border: oklch(0 0 0 / 0.08);
+  --color-border-hover: oklch(0 0 0 / 0.15);
+
+  /* ── Text Hierarchy ────────────────────────────────────── */
+  --color-text-primary: oklch(0.15 0.02 270);
+  --color-text-secondary: oklch(0.35 0.02 270);
+  --color-text-tertiary: oklch(0.50 0.02 270);
+
+  /* ── Before / After Tints ──────────────────────────────── */
+  --color-tint-before: oklch(0.88 0.14 20);
+  --color-tint-after: oklch(0.88 0.16 145);
+  --color-border-before: oklch(0.50 0.22 20 / 0.75);
+  --color-border-after: oklch(0.45 0.22 145 / 0.75);
+
+  /* ── Gold on dark backgrounds (overlay/dark sections) ─── */
+  --color-gold-light: oklch(0.80 0.17 85);
+
+  /* ── Hero / Nav Overlay ────────────────────────────────── */
+  --color-overlay-dark: oklch(0.10 0.01 270);
+  --color-nav-bg: oklch(0.97 0.005 80 / 0.85);
+  --color-nav-bg-mobile: oklch(0.97 0.005 80 / 0.97);
+
+  /* ── Typography Scale (fluid clamp) ────────────────────── */
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+  --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.6vw, 1.375rem);
+  --text-xl: clamp(1.375rem, 1.1rem + 1.2vw, 2rem);
+  --text-2xl: clamp(1.75rem, 1.3rem + 2vw, 3rem);
+  --text-3xl: clamp(2.25rem, 1.5rem + 3vw, 4.5rem);
+  --text-hero: clamp(3rem, 2rem + 5vw, 7rem);
+
+  /* ── Spacing Scale (fluid clamp) ───────────────────────── */
+  --spacing-xs: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
+  --spacing-sm: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
+  --spacing-md: clamp(0.75rem, 0.6rem + 0.75vw, 1.25rem);
+  --spacing-lg: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  --spacing-xl: clamp(1.5rem, 1rem + 2vw, 3rem);
+  --spacing-2xl: clamp(2rem, 1.5rem + 3vw, 5rem);
+  --spacing-3xl: clamp(3rem, 2rem + 5vw, 8rem);
+  --spacing-section: clamp(4rem, 3rem + 5vw, 8rem);
+
+  /* ── Border Radii ──────────────────────────────────────── */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+
+  /* ── Shadows ───────────────────────────────────────────── */
+  --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.08);
+  --shadow-md: 0 4px 12px oklch(0 0 0 / 0.1);
+  --shadow-lg: 0 8px 32px oklch(0 0 0 / 0.15);
+  --shadow-glow-gold: 0 0 24px oklch(0.55 0.17 75 / 0.2);
+  --shadow-glow-celeste: 0 0 24px oklch(0.55 0.11 240 / 0.15);
+
+  /* ── Motion ────────────────────────────────────────────── */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-decelerate: cubic-bezier(0, 0, 0.2, 1);
+  --ease-accelerate: cubic-bezier(0.4, 0, 1, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ── Layout ────────────────────────────────────────────── */
+  --width-content: 80rem;
+  --width-narrow: 52rem;
+  --height-nav: 4rem;
+}
+
+/* ── Duration custom properties (not @theme — used in transitions) */
+:root {
+  --duration-fast: 200ms;
+  --duration-normal: 300ms;
+  --duration-slow: 600ms;
+  --duration-slower: 1200ms;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Reusable Component Classes
+   Extracted from 364 inline style={{}} patterns.
+   ══════════════════════════════════════════════════════════════ */
+@layer components {
+  /* Badge / tag text — kicker labels, category badges (25+ uses) */
+  .badge-text {
+    font-family: var(--font-accent);
+    font-size: var(--text-xs);
+    color: var(--color-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* Prose body paragraphs (20+ uses) */
+  .prose-body {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+  }
+
+  /* Prose body with narrower measure */
+  .prose-body-narrow {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    max-width: 65ch;
+  }
+
+  /* Stat number — big gold metric (12+ uses) */
+  .stat-number {
+    font-family: var(--font-accent);
+    font-size: var(--text-2xl);
+    color: var(--color-gold);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  /* Stat label — small text below stat number */
+  .stat-label {
+    font-family: var(--font-accent);
+    font-size: var(--text-xs);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Chapter heading numeral (25+ uses) */
+  .chapter-numeral {
+    font-family: var(--font-accent);
+    font-size: var(--text-2xl);
+    color: var(--color-gold);
+    line-height: 1;
+  }
+
+  /* Chapter heading title */
+  .chapter-title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    color: var(--color-text-primary);
+    line-height: 1.1;
+    margin: 0;
+  }
+
+  /* Pullquote / blockquote (8+ uses) */
+  .pullquote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    border-left: 3px solid var(--color-gold);
+    padding-left: var(--spacing-lg);
+    margin: 0;
+  }
+
+  /* ─── Semantic typography helpers ───────────────────────────────────────── */
+
+  /* Eyebrow above content blocks (gold, uppercase accent) */
+  .section-kicker {
+    font-family: var(--font-accent);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-gold);
+    margin-bottom: 0.75rem;
+  }
+
+  /* Label inside cards (tertiary, uppercase) */
+  .card-label {
+    font-family: var(--font-accent);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-tertiary);
+    margin-bottom: 0.25rem;
+    display: block;
+  }
+
+  /* Heading inside cards (display serif, sm) */
+  .card-heading {
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    color: var(--color-text-primary);
+    margin: 0 0 0.5rem 0;
+    line-height: 1.3;
+  }
+
+  /* Body text inside cards (xs, relaxed) */
+  .card-body {
+    font-size: var(--text-xs);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  /* Prose wrapper for narrative text blocks */
+  .content-prose {
+    max-width: 44rem;
+  }
+
+  .content-prose > p {
+    font-size: var(--text-base);
+    line-height: 1.75;
+    color: var(--color-text-secondary);
+    margin-bottom: 1.25rem;
+  }
+
+  .content-prose > p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Forces white text hierarchy over dark overlay backgrounds (PageHeader w/ bg image) */
+  .section-light-text {
+    --color-text-primary: oklch(1 0 0 / 0.92);
+    --color-text-secondary: oklch(1 0 0 / 0.56);
+    --color-text-tertiary: oklch(1 0 0 / 0.40);
+    --color-gold: oklch(0.80 0.17 85);
+  }
+
+  /* Hero gradient overlay — replaces inline background in Hero.tsx */
+  .hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      color-mix(in oklch, var(--color-overlay-dark), transparent 85%) 0%,
+      color-mix(in oklch, var(--color-overlay-dark), transparent 65%) 40%,
+      color-mix(in oklch, var(--color-overlay-dark), transparent 30%) 80%,
+      color-mix(in oklch, var(--color-overlay-dark), transparent 10%) 100%
+    );
+  }
+
+  /* Card spotlight glow — reads --mx/--my set directly on parent by useMousePosition.
+     Zero React re-renders per mousemove frame; gradient computed entirely by CSS. */
+  .card-glow {
+    background: radial-gradient(
+      circle 200px at var(--mx, 50%) var(--my, 50%),
+      oklch(0.80 0.17 85 / 0.15),
+      transparent 70%
+    );
+  }
+
+  /* Surface card — glassmorphic card base (30+ uses) */
+  .surface-card {
+    background: var(--color-surface-1);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    transition: border-color var(--duration-fast) var(--ease-standard),
+                box-shadow var(--duration-fast) var(--ease-standard);
+  }
+
+  /* Surface card with gold accent border */
+  .surface-card-accent {
+    background: var(--color-surface-1);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-gold);
+    border-radius: var(--radius-xl);
+  }
+
+  /* Section divider — horizontal rule (10+ uses) */
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: 0 0 3rem;
+  }
+
+  /* Before panel (tinted red — gradient for depth) */
+  .panel-before {
+    background: linear-gradient(160deg, oklch(0.88 0.14 20) 0%, oklch(0.93 0.06 20) 100%);
+    border: 1.5px solid var(--color-border-before);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+  }
+
+  /* After panel (tinted green — gradient for depth) */
+  .panel-after {
+    background: linear-gradient(160deg, oklch(0.88 0.16 145) 0%, oklch(0.93 0.07 145) 100%);
+    border: 1.5px solid var(--color-border-after);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+  }
+
+  /* Page eyebrow — section label above h1 */
+  .page-eyebrow {
+    font-family: var(--font-accent);
+    font-size: var(--text-sm);
+    color: var(--color-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  /* Page title — main h1 */
+  .page-title {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    color: var(--color-text-primary);
+    line-height: 1.05;
+    margin: 0;
+  }
+
+  /* Page subtitle — description under h1 */
+  .page-subtitle {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    max-width: 52ch;
+    margin-top: var(--spacing-md);
+  }
+
+  /* Sidebar nav container */
+  .sidebar-nav {
+    position: sticky;
+    top: calc(var(--height-nav) + 2rem);
+    align-self: flex-start;
+    min-width: 14rem;
+  }
+
+  /* Sidebar nav item (inactive) */
+  .sidebar-nav-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    color: var(--color-text-tertiary);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-standard),
+                background var(--duration-fast) var(--ease-standard);
+    cursor: pointer;
+  }
+
+  .sidebar-nav-item:hover {
+    color: var(--color-text-primary);
+    background: var(--color-surface-1);
+  }
+
+  /* Sidebar nav item (active) */
+  .sidebar-nav-item-active {
+    color: var(--color-gold);
+    background: var(--color-surface-1);
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Base Styles
+   ══════════════════════════════════════════════════════════════ */
+html {
+  color-scheme: light;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-dark);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  min-height: 100dvh;
+}
+
+/* ── Typography Defaults ──────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+h5, h6 {
+  font-family: var(--font-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+
+/* ── Selection ────────────────────────────────────────────── */
+::selection {
+  background: oklch(0.55 0.17 75 / 0.2);
+  color: var(--color-text-primary);
+}
+
+/* ── Focus Indicators (WCAG 2.2) ──────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Skip Link ────────────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-gold);
+  color: var(--color-dark);
+  font-family: var(--font-accent);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: var(--radius-md);
+  transition: top var(--duration-fast) var(--ease-standard);
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* ── Scrollbar ────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: oklch(0 0 0 / 0.12);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0 0 0 / 0.25);
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: oklch(0 0 0 / 0.12) var(--color-dark-hex, #f5f2ed);
+}
+
+/* ── Reduced Motion ───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── View Transitions ─────────────────────────────────────── */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: vt-exit var(--duration-normal) var(--ease-accelerate) forwards;
+}
+
+::view-transition-new(root) {
+  animation: vt-enter var(--duration-normal) var(--ease-decelerate) forwards;
+}
+
+@keyframes vt-exit {
+  from { opacity: 1; transform: translateY(0); filter: blur(0); }
+  to { opacity: 0; transform: translateY(-8px); filter: blur(2px); }
+}
+
+@keyframes vt-enter {
+  from { opacity: 0; transform: translateY(8px); filter: blur(2px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+/* ── Gold Shimmer ─────────────────────────────────────────── */
+.gold-shimmer {
+  background-image: linear-gradient(
+    105deg,
+    #c9a227 0%,
+    #f0d060 20%,
+    #c9a227 40%,
+    #9a7b1a 60%,
+    #c9a227 80%,
+    #f0d060 100%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 100% center; }
+  100% { background-position: -100% center; }
+}
+
+/* ── Scroll Dot (Hero indicator) ─────────────────────────── */
+@keyframes scroll-dot {
+  0%, 100% { opacity: 1; transform: translateY(0); }
+  50% { opacity: 0.4; transform: translateY(6px); }
+}
+
+/* ── Card Hover States ────────────────────────────────────── */
+.card-hover {
+  transition: transform var(--duration-fast) var(--ease-standard),
+              border-color var(--duration-fast) var(--ease-standard),
+              box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+.card-hover:hover {
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-glow-gold);
+}
+
+/* Touch tap feedback for devices without hover */
+@media (hover: none) {
+  .card-hover:active {
+    transform: scale(0.97);
+    border-color: var(--color-border-hover);
+    transition-duration: 100ms;
+  }
+}
+
+/* ── Gold Rule — decorative section ornament ─────────────── */
+.gold-rule {
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  background: var(--color-gold);
+  border-radius: 1px;
+  margin-bottom: 1.25rem;
+}
+
+/* ── Link Slide — animated underline on hover ─────────────── */
+.link-slide {
+  position: relative;
+  text-decoration: none;
+}
+
+.link-slide::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width var(--duration-fast) var(--ease-out-expo);
+}
+
+.link-slide:hover::after {
+  width: 100%;
+}
+
+/* ── Link Hover ───────────────────────────────────────────── */
+a:hover {
+  color: var(--color-gold);
+}
+
+/* ── Prose Bold Styling ───────────────────────────────────── */
+strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+/* ── Blockquote Defaults ──────────────────────────────────── */
+blockquote {
+  quotes: none;
+}
+
+/* ── Image Defaults ───────────────────────────────────────── */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Animation Keyframes — Ultra Premium Motion Library
+   ══════════════════════════════════════════════════════════════ */
+
+@keyframes anim-fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes anim-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes anim-scale-in {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes anim-clip-reveal-up {
+  from { clip-path: inset(100% 0 0 0); }
+  to { clip-path: inset(0); }
+}
+
+@keyframes anim-clip-reveal-right {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0); }
+}
+
+@keyframes anim-slide-left {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes anim-slide-right {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes anim-line-expand {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes anim-blur-in {
+  from { opacity: 0; filter: blur(8px); }
+  to { opacity: 1; filter: blur(0); }
+}
+
+@keyframes anim-number-pop {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ── Scroll Progress Bar (pure CSS) ─────────────────────── */
+.scroll-progress {
+  position: fixed;
+  top: var(--height-nav);
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-gold);
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: scroll-scale linear;
+  animation-timeline: scroll();
+  z-index: 51;
+  pointer-events: none;
+}
+
+@keyframes scroll-scale {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* ── Link Slide Underline ────────────────────────────────── */
+.link-slide {
+  position: relative;
+}
+
+.link-slide::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--duration-normal) var(--ease-out-expo);
+}
+
+.link-slide:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ── Gold Gradient Text (static, no shimmer) ─────────────── */
+.gold-gradient {
+  background-image: linear-gradient(105deg, #c9a227 0%, #f0d060 50%, #c9a227 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ── Image Reveal Animation ──────────────────────────────── */
+.img-zoom-hover {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+
+.img-zoom-hover img {
+  transition: transform var(--duration-slow) var(--ease-standard);
+}
+
+.img-zoom-hover:hover img {
+  transform: scale(1.04);
+}
+
+/* ── Film Grain Overlay (cinematic texture) ──────────────── */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+/* ── Vignette Effect ─────────────────────────────────────── */
+.vignette {
+  position: relative;
+}
+
+.vignette::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 50%, oklch(0.97 0.005 80 / 0.4) 100%);
+  z-index: 1;
+}
+
+/* ── Glow Accent ─────────────────────────────────────────── */
+.glow-accent {
+  position: relative;
+}
+
+.glow-accent::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  height: 60%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, oklch(0.80 0.17 85 / 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Section Gradient Bleeds ─────────────────────────────── */
+.section-bleed-top {
+  position: relative;
+}
+
+.section-bleed-top::before {
+  content: "";
+  position: absolute;
+  top: -4rem;
+  left: 0;
+  right: 0;
+  height: 8rem;
+  background: linear-gradient(to bottom, transparent, var(--section-bg, var(--color-dark)));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.section-bleed-bottom {
+  position: relative;
+}
+
+.section-bleed-bottom::after {
+  content: "";
+  position: absolute;
+  bottom: -4rem;
+  left: 0;
+  right: 0;
+  height: 8rem;
+  background: linear-gradient(to top, transparent, var(--section-bg, var(--color-dark)));
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Animated Divider ────────────────────────────────────── */
+.divider-animated {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-gold), transparent);
+  transform: scaleX(0);
+  transform-origin: center;
+}
