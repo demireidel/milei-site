@@ -38,10 +38,20 @@ export function useAnimatedNumber({
     const el = ref.current;
     if (!el) return;
 
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated.current) {
           hasAnimated.current = true;
+
+          if (reducedMotion) {
+            setValue(target);
+            return;
+          }
+
           const start = performance.now();
           const scale = Math.pow(10, decimals);
           const scaledTarget = Math.round(target * scale);

@@ -20,6 +20,8 @@ export function useSectionObserver(
 ): string {
   const [active, setActive] = useState(ids[0] ?? "");
 
+  const idsKey = ids.join(",");
+
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
 
@@ -39,10 +41,7 @@ export function useSectionObserver(
     });
 
     return () => observers.forEach((o) => o.disconnect());
-  // ids array has unstable identity (new ref each render even with same values).
-  // ids.join(",") produces a stable primitive — effect only re-runs when IDs change.
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ids.join(","), rootMargin]);
+  }, [idsKey, rootMargin]); // idsKey is a stable primitive derived from ids
 
   return active;
 }

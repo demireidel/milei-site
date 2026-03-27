@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { ArchivoContent } from "@/components/archivo/ArchivoContent";
 import {
@@ -20,6 +21,7 @@ export const metadata: Metadata = {
 export default function ArchivoPage() {
   return (
     <>
+      <BreadcrumbSchema name="Archivo Intelectual" path="/archivo" />
       <PageHeader
         eyebrow={archivoHeader.sectionTitle}
         title="Obra Intelectual"

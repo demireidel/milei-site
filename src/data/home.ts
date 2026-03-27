@@ -1,5 +1,11 @@
 // ── Home page data ────────────────────────────────────────────
 
+import { STATS } from "./stats";
+
+/** Parse leading number from a STATS display string (e.g. "2,4%" → 2.4). */
+const num = (s: string): number =>
+  Number(s.replace(/[^0-9,.-]/g, "").replace(/\./g, "").replace(",", "."));
+
 export interface HomeStat {
   /** Animated target number */
   target: number;
@@ -17,13 +23,15 @@ export interface SectionCard {
   href: string;
   stat?: string;
   statLabel?: string;
+  img?: string;
+  imgAlt?: string;
 }
 
 export const homeStats: HomeStat[] = [
-  { target: 57, suffix: "% → 27%", label: "Reducción de pobreza" },
-  { target: 2.4, suffix: "% mensual", label: "Inflación", decimals: 1 },
-  { target: 14500, suffix: "+", label: "Desregulaciones" },
-  { target: 497, suffix: " pts", label: "Riesgo país" },
+  { target: num(STATS.pobrezaAnterior), suffix: `% → ${STATS.pobreza.replace("%", "")}%`, label: "Reducción de pobreza" },
+  { target: num(STATS.inflacionMensual), suffix: "% mensual", label: "Inflación", decimals: 1 },
+  { target: num(STATS.desregulaciones), suffix: "+", label: "Desregulaciones" },
+  { target: num(STATS.riesgoPais), suffix: " pts", label: "Riesgo país" },
 ] satisfies HomeStat[];
 
 export const sectionCards: SectionCard[] = [
@@ -33,6 +41,8 @@ export const sectionCards: SectionCard[] = [
     href: "/vision",
     stat: "5",
     statLabel: "capítulos",
+    img: "/images/banco/apertura-sesiones-2024.jpg",
+    imgAlt: "Milei en discurso de apertura de sesiones",
   },
   {
     title: "Logros",
@@ -40,6 +50,8 @@ export const sectionCards: SectionCard[] = [
     href: "/logros",
     stat: "19",
     statLabel: "logros",
+    img: "/images/banco/inauguracion-discurso-congreso.jpg",
+    imgAlt: "Javier Milei en la asunción presidencial",
   },
   {
     title: "Reformas",
@@ -47,6 +59,8 @@ export const sectionCards: SectionCard[] = [
     href: "/reformas",
     stat: "12",
     statLabel: "reformas",
+    img: "/images/banco/congreso-apertura-2024.jpg",
+    imgAlt: "Congreso de la Nación",
   },
   {
     title: "Futuro",
@@ -54,6 +68,8 @@ export const sectionCards: SectionCard[] = [
     href: "/futuro",
     stat: "4",
     statLabel: "proyectos",
+    img: "/images/banco/silicon-valley-tech-leaders.jpg",
+    imgAlt: "Milei en Silicon Valley",
   },
   {
     title: "Mundo",
@@ -61,6 +77,8 @@ export const sectionCards: SectionCard[] = [
     href: "/mundo",
     stat: "3",
     statLabel: "TLCs firmados",
+    img: "/images/banco/trump-casablanca-oval.jpg",
+    imgAlt: "Milei con líderes internacionales",
   },
   {
     title: "Archivo",
@@ -68,5 +86,7 @@ export const sectionCards: SectionCard[] = [
     href: "/archivo",
     stat: "80+",
     statLabel: "obras",
+    img: "/images/banco/davos-2024-discurso.jpg",
+    imgAlt: "Milei en el Foro de Davos",
   },
 ] satisfies SectionCard[];

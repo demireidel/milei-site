@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { pobrezaData, logros, logrosSectionHeader } from "@/data/logros";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { LogrosGrid } from "@/components/logros/LogrosGrid";
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
 export default function LogrosPage() {
   return (
     <>
+      <BreadcrumbSchema name="Logros" path="/logros" />
       <PageHeader
         eyebrow={logrosSectionHeader.sectionTitle}
         title="Resultados Concretos"

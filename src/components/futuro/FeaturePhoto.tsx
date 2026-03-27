@@ -17,7 +17,7 @@ export function FeaturePhoto({ photo }: FeaturePhotoProps) {
         style={{ objectPosition: photo.objectPosition }}
         loading="lazy"
       />
-      <figcaption className="mt-3 text-[length:var(--text-xs)] text-text-tertiary">
+      <figcaption className="mt-3 text-xs text-text-tertiary">
         <strong className="text-text-secondary">{photo.captionStrong}</strong>
         {" — "}
         {photo.captionSpan}

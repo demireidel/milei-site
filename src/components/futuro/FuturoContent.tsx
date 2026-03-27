@@ -18,6 +18,7 @@ import { SectionKicker } from "@/components/ui/SectionKicker";
 import { Prose } from "@/components/ui/Prose";
 import { FeaturePhoto } from "@/components/futuro/FeaturePhoto";
 import { PhotoGallery } from "@/components/futuro/PhotoGallery";
+import { InsightCallout } from "@/components/ui/InsightCallout";
 
 const sidebarItems = [
   { id: "silicon-valley", num: "I", title: "Silicon Valley" },
@@ -70,6 +71,7 @@ export function FuturoContent({
         <Prose>
           {siliconValley.paragraphs.map((p) => <p key={p.slice(0, 40)}>{p}</p>)}
         </Prose>
+        <InsightCallout icon="🏗️">Argentina se posiciona como hub de IA del hemisferio sur — sin regulación hostil, con energía limpia abundante.</InsightCallout>
         <PhotoGallery photos={galleryPhotos} />
       </SectionArticle>
 
@@ -85,6 +87,7 @@ export function FuturoContent({
         <Prose className="mb-8">
           {stargate.paragraphs.map((p) => <p key={p.slice(0, 40)}>{p}</p>)}
         </Prose>
+        <InsightCallout icon="⚡">USD 500.000M de inversión global en infraestructura de IA — Argentina compite por una porción significativa.</InsightCallout>
         <Pullquote cite={`— ${stargate.quote.cite}`}>
           {stargate.quote.text}
         </Pullquote>
@@ -112,6 +115,7 @@ export function FuturoContent({
             </div>
           ))}
         </div>
+        <InsightCallout icon="☢️">Tres fases para cuadruplicar la capacidad nuclear argentina y posicionarla como exportadora de tecnología.</InsightCallout>
         <Pullquote cite={`— ${nuclear.quote.cite}`}>
           {nuclear.quote.text}
         </Pullquote>
@@ -130,6 +134,7 @@ export function FuturoContent({
         <Prose>
           {vacaMuerta.paragraphs.map((p) => <p key={p.slice(0, 40)}>{p}</p>)}
         </Prose>
+        <InsightCallout icon="🛢️">Segunda reserva mundial de gas no convencional — de importar energía a exportar a escala global.</InsightCallout>
       </SectionArticle>
 
       {/* Closing */}

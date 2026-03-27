@@ -27,7 +27,7 @@ export default function Error({ error, reset }: ErrorProps) {
           Reintentar
         </button>
         {error.digest && (
-          <p className="mt-4 font-mono text-[length:var(--text-xs)] text-text-tertiary">
+          <p className="mt-4 font-mono text-xs text-text-tertiary">
             Ref: {error.digest}
           </p>
         )}

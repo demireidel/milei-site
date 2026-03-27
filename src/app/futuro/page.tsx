@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Pullquote } from "@/components/ui/Pullquote";
 import {
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
 export default function FuturoPage() {
   return (
     <>
+      <BreadcrumbSchema name="Futuro" path="/futuro" />
       <PageHeader
         eyebrow={futuroHeader.sectionTitle}
         title="El Futuro de Argentina"

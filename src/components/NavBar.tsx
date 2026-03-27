@@ -109,14 +109,15 @@ export function NavBar() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 h-[var(--height-nav)] transition-all duration-[var(--duration-normal)] ease-[var(--ease-standard)] ${
+        style={{ viewTransitionName: "navbar" }}
+        className={`fixed inset-x-0 top-0 z-50 h-nav transition-all duration-normal ease-standard ${
           scrolled
             ? "border-b border-border bg-nav-bg backdrop-blur-[12px] backdrop-saturate-[1.2]"
             : "border-b border-transparent bg-transparent"
         }`}
       >
         <nav
-          className="mx-auto flex h-full max-w-[var(--width-content)] items-center justify-between px-4 sm:px-6 lg:px-8"
+          className="mx-auto flex h-full max-w-content items-center justify-between px-4 sm:px-6 lg:px-8"
           aria-label="Navegación principal"
         >
           {/* Wordmark */}
@@ -140,7 +141,7 @@ export function NavBar() {
                     if (el) linkRefs.current.set(link.href, el);
                   }}
                   href={link.href}
-                  className={`relative px-3 py-2 font-body text-sm font-medium no-underline transition-colors duration-[var(--duration-fast)] ${
+                  className={`relative px-3 py-2 font-body text-sm font-medium no-underline transition-colors duration-fast ${
                     isActive(link.href)
                       ? "text-gold"
                       : "text-text-secondary hover:text-text-primary"
@@ -171,22 +172,22 @@ export function NavBar() {
           <button
             ref={hamburgerRef}
             onClick={toggleMenu}
-            className="flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-full border border-white/15 bg-white/10 backdrop-blur-sm transition-colors duration-[var(--duration-fast)] hover:bg-white/15 md:hidden"
+            className="flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-full border border-white/15 bg-white/10 backdrop-blur-sm transition-colors duration-fast hover:bg-white/15 md:hidden"
             aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={menuOpen}
           >
             <span
-              className={`block h-0.5 w-5 bg-white transition-all duration-[var(--duration-fast)] ${
+              className={`block h-0.5 w-5 bg-white transition-all duration-fast ${
                 menuOpen ? "translate-y-[4px] rotate-45" : ""
               }`}
             />
             <span
-              className={`block h-0.5 w-5 bg-white transition-all duration-[var(--duration-fast)] ${
+              className={`block h-0.5 w-5 bg-white transition-all duration-fast ${
                 menuOpen ? "opacity-0" : "opacity-100"
               }`}
             />
             <span
-              className={`block h-0.5 w-5 bg-white transition-all duration-[var(--duration-fast)] ${
+              className={`block h-0.5 w-5 bg-white transition-all duration-fast ${
                 menuOpen ? "-translate-y-[4px] -rotate-45" : ""
               }`}
             />
@@ -199,7 +200,7 @@ export function NavBar() {
 
       {/* Mobile overlay menu */}
       <div
-        className={`fixed inset-0 z-40 flex flex-col items-center justify-center bg-nav-bg-mobile backdrop-blur-[24px] transition-all duration-[var(--duration-normal)] ease-[var(--ease-standard)] md:hidden ${
+        className={`fixed inset-0 z-40 flex flex-col items-center justify-center bg-nav-bg-mobile backdrop-blur-[24px] transition-all duration-normal ease-standard md:hidden ${
           menuOpen ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         aria-hidden={!menuOpen}
@@ -209,7 +210,7 @@ export function NavBar() {
             {navLinks.map((link, i) => (
               <li
                 key={link.href}
-                className={`transition-[opacity,transform] duration-[var(--duration-normal)] ease-[var(--ease-decelerate)] ${
+                className={`transition-[opacity,transform] duration-normal ease-decelerate ${
                   menuOpen
                     ? "translate-y-0 opacity-100"
                     : "translate-y-4 opacity-0"
@@ -218,7 +219,7 @@ export function NavBar() {
               >
                 <Link
                   href={link.href}
-                  className={`block px-6 py-3 text-center font-accent text-[length:var(--text-2xl)] uppercase tracking-wider no-underline transition-colors duration-[var(--duration-fast)] ${
+                  className={`block px-6 py-3 text-center font-accent text-2xl uppercase tracking-wider no-underline transition-colors duration-fast ${
                     isActive(link.href)
                       ? "text-gold"
                       : "text-text-primary hover:text-gold"

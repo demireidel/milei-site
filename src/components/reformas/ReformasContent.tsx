@@ -11,8 +11,16 @@ import { Pullquote } from "@/components/ui/Pullquote";
 import { SectionArticle } from "@/components/ui/SectionArticle";
 import { RichText } from "@/components/ui/RichText";
 import { BentoGrid } from "@/components/ui/BentoGrid";
+import { InsightCallout } from "@/components/ui/InsightCallout";
 
 const romanNumerals = ["I", "II", "III", "IV", "V", "VI"];
+
+const blockInsights: { icon: string; text: string }[] = [
+  { icon: "💰", text: "Ajuste fiscal de 15 puntos del PIB, inflación del 211% al nivel más bajo en 8 años, y unificación cambiaria — los tres exámenes aprobados en tiempo récord." },
+  { icon: "📋", text: "14.500 desregulaciones ejecutadas — de la economía más regulada de Sudamérica a la más libre del continente." },
+  { icon: "⚖️", text: "Primera reforma laboral de la democracia, nuevo Código de Comercio y régimen RIGI para atraer inversiones de gran escala." },
+  { icon: "🛡️", text: "Tasa de homicidios en caída, régimen penal juvenil y protocolo antiterrorismo — sin orden no hay libertad posible." },
+];
 
 function toId(title: string) {
   return `bloque-${title.replace(/\s+/g, "-").toLowerCase()}`;
@@ -121,6 +129,9 @@ export function ReformasContent({
                 </div>
               ))}
             </BentoGrid>
+            {blockInsights[i] && (
+              <InsightCallout icon={blockInsights[i].icon}>{blockInsights[i].text}</InsightCallout>
+            )}
           </SectionArticle>
         );
       })}

@@ -11,6 +11,7 @@ import { DataStripGrid } from "@/components/vision/DataStripGrid";
 import { PyramidList } from "@/components/vision/PyramidList";
 import { PillarGrid } from "@/components/vision/PillarGrid";
 import { ThinkerGrid } from "@/components/vision/ThinkerGrid";
+import { InsightCallout } from "@/components/ui/InsightCallout";
 
 /* ───────── types ───────── */
 
@@ -35,6 +36,7 @@ export function VisionChapters({ photos }: { photos: Photo[] }) {
           <p>Después vino la catástrofe. A partir de la década del 30, la dirigencia abandonó el modelo que nos había hecho ricos y abrazó las ideas empobrecedoras del colectivismo. Cada gobierno agrandó el Estado, creó nuevas regulaciones, aumentó el gasto público. El resultado: más de cien años de decadencia ininterrumpida. Un país que en 1910 tenía el mismo PBI per cápita que Estados Unidos fue cayendo hasta ubicarse en el puesto 140 del ranking mundial de libertad económica.</p>
           <p>Mi proyecto no es administrar esa decadencia. <strong>Es dinamitarla y refundar la Argentina sobre las ideas que la hicieron grande.</strong> Cada decisión de gobierno se mide contra una sola pregunta: <strong>¿esto nos acerca a ser el país más libre del mundo?</strong></p>
         </Prose>
+        <InsightCallout icon="📜">De potencia mundial en 1895 a puesto 140 en libertad económica — un siglo de colectivismo destruyó lo que 35 años de libertad construyeron.</InsightCallout>
         <Pullquote cite="Discurso de asunción, diciembre 2023">&laquo;Hoy volvemos a abrazar las ideas de Alberdi, de nuestros padres fundadores, que hicieron que en 35 años pasáramos de ser un país de bárbaros a ser potencia.&raquo;</Pullquote>
         <DataStripGrid items={dataStrip} />
         {photos[0] && <ChapterPhoto src={photos[0].src} alt={photos[0].alt} caption={photos[0].caption} objectPosition={photos[0].objectPosition} />}
@@ -48,6 +50,7 @@ export function VisionChapters({ photos }: { photos: Photo[] }) {
           <p>Como planteó <strong>Israel Kirzner</strong>, los socialistas ya no niegan que el capitalismo funciona — porque los datos son irrefutables. Lo que hacen es acusarlo de inmoral. Entonces la verdadera batalla de nuestro tiempo no es económica — es moral.</p>
           <p>El capitalista exitoso no se apropia de la riqueza ajena — contribuye al bienestar general. <strong>Un empresario exitoso es un héroe, un benefactor social</strong> que solo puede prosperar sirviendo al prójimo con mejores bienes a mejor precio.</p>
         </Prose>
+        <InsightCallout icon="📈">El PBI per cápita mundial se multiplicó por 15 en 200 años de capitalismo — más de 2.000 millones de personas salieron de la pobreza extrema.</InsightCallout>
         <Pullquote cite="Davos, enero 2024">&laquo;El capitalista, el empresario exitoso, es un benefactor social que, lejos de apropiarse de la riqueza ajena, contribuye al bienestar general. No les dejen decir que su ambición es inmoral.&raquo;</Pullquote>
         <Prose>
           <p><strong>&laquo;Maquiavelo ha muerto.&raquo;</strong> <strong>Jesús Huerta de Soto</strong> demostró que la eficiencia dinámica surge única y exclusivamente del respeto a la propiedad privada y la función empresarial. Y como probó <strong>Friedrich Hayek</strong>, el conocimiento está disperso en la sociedad — ningún planificador central puede reemplazar al orden espontáneo del mercado libre.</p>
@@ -67,6 +70,7 @@ export function VisionChapters({ photos }: { photos: Photo[] }) {
           <p>En Argentina, cada «solución» estatal generó problemas mayores que los que pretendía resolver. La regulación del mercado de alquileres destruyó la oferta y disparó los precios. Los subsidios energéticos costaron USD 14.000 millones anuales y desfinanciaron la inversión en infraestructura. Los controles de precios generaron desabastecimiento. El cepo cambiario creó un mercado negro y ahuyentó la inversión extranjera. <strong>Cada intervención es una cuña que distorsiona los precios relativos y destruye información.</strong></p>
           <p><strong>Las funciones del Estado deben limitarse a la defensa del derecho a la vida, a la libertad y a la propiedad.</strong> Nada más. Todo lo demás es coacción disfrazada de política pública. El gasto público no es gratuito: cada peso que gasta el Estado es un peso que se le quita a un ciudadano que lo habría gastado mejor. No es un debate de gestión — es un debate moral.</p>
         </Prose>
+        <InsightCallout icon="🏛️">El gasto público pasó del 15% al 42% del PIB entre 1946 y 2023 — más de 600 organismos creados, carga impositiva triplicada.</InsightCallout>
         <Pullquote cite="Davos, enero 2024">&laquo;El Estado no es la solución. El Estado es el problema mismo. No cedan al avance del Estado.&raquo;</Pullquote>
         {photos[4] && <ChapterPhoto src={photos[4].src} alt={photos[4].alt} caption={photos[4].caption} objectPosition={photos[4].objectPosition} />}
       </SectionArticle>
@@ -79,6 +83,7 @@ export function VisionChapters({ photos }: { photos: Photo[] }) {
           <p>La década del 90 es la prueba. Carlos Menem implementó reformas económicas profundas — privatizaciones, apertura comercial, convertibilidad — y sin embargo la izquierda logró revertirlas todas en pocos años. El colectivismo no volvió porque las reformas fracasaron; volvió porque la izquierda nunca perdió la hegemonía cultural.</p>
           <p><strong>Antonio Gramsci</strong> escribió desde la cárcel en los años 30 que para implantar el socialismo era necesario primero conquistar la cultura. La izquierda lo hizo al pie de la letra durante 80 años. <strong>La batalla cultural fue ganada por la izquierda básicamente porque nosotros no dimos la batalla.</strong></p>
         </Prose>
+        <InsightCallout icon="🎯">Las reformas de los 90 fracasaron no por malas políticas, sino porque la izquierda nunca perdió la hegemonía cultural — la batalla de las ideas es indispensable.</InsightCallout>
         <Pullquote cite="CPAC Argentina, diciembre 2024">&laquo;Sin el cuidado de las ideas, no importa qué tan buenos seamos gestionando o cuán buenos seamos políticamente, no vamos a llegar a ningún lado.&raquo;</Pullquote>
         <PillarGrid items={pillars} />
         <Prose>
@@ -96,6 +101,7 @@ export function VisionChapters({ photos }: { photos: Photo[] }) {
           <p>Y sin embargo, Occidente representa el pico de la civilización humana. Durante 2.500 años, a partir de cuatro fuentes — <strong>la filosofía griega, el derecho romano, la rectitud de los estoicos y los valores judeocristianos</strong> — Occidente construyó el edificio institucional que hizo posible la ciencia, el arte, la medicina, la tecnología y la libertad individual.</p>
           <p><strong>La paz nos volvió débiles. La prosperidad nos hizo complacientes.</strong> Las generaciones que no conocieron el horror del totalitarismo olvidaron por qué la libertad es un bien que debe defenderse con uñas y dientes, todos los días, sin descanso.</p>
         </Prose>
+        <InsightCallout icon="🌍">2.500 años de civilización occidental — filosofía griega, derecho romano, estoicismo y valores judeocristianos — hicieron posible la libertad individual.</InsightCallout>
         <Pullquote cite="Davos, enero 2024">&laquo;Occidente está en peligro, y quienes deberían defenderlo lo están abandonando.&raquo;</Pullquote>
         <Prose>
           <p>La amenaza no viene solo del exterior. Organismos internacionales como la ONU, creados para preservar la paz y la libertad, fueron cooptados por una agenda colectivista que impone objetivos redistributivos, cuotas ideológicas y restricciones a la soberanía nacional bajo el rótulo de «desarrollo sostenible». La Agenda 2030 no es un programa de progreso — es un instrumento de planificación centralizada a escala global. Por eso Argentina votó en contra en la Asamblea General y se retiró del Pacto del Futuro.</p>
@@ -109,13 +115,13 @@ export function VisionChapters({ photos }: { photos: Photo[] }) {
 
       {/* Closing declaration */}
       <div className="border-t border-border py-12 text-center">
-        <p className="font-accent text-[length:var(--text-2xl)] uppercase leading-tight tracking-wide text-text-primary">
+        <p className="font-accent text-2xl uppercase leading-tight tracking-wide text-text-primary">
           Argentina será<br />
           el país más{" "}
           <span className="font-display italic normal-case text-gold">libre</span>
           <br />del mundo
         </p>
-        <p className="mt-4 font-accent text-[length:var(--text-sm)] tracking-widest text-text-tertiary">
+        <p className="mt-4 font-accent text-sm tracking-widest text-text-tertiary">
           ¡Viva la libertad, carajo!
         </p>
       </div>

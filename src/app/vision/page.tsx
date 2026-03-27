@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Pullquote } from "@/components/ui/Pullquote";
 import { visionPhotos } from "@/data/photos";
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 export default function VisionPage() {
   return (
     <>
+      <BreadcrumbSchema name="Visión y Filosofía" path="/vision" />
       <PageHeader
         eyebrow="La visión"
         title="Argentina será"

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { leaders, timeline, megaStats, tradeAgreements } from "@/data/mundo";
 import { MundoContent } from "@/components/mundo/MundoContent";
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
 export default function MundoPage() {
   return (
     <>
+      <BreadcrumbSchema name="Internacional" path="/mundo" />
       <PageHeader
         eyebrow="Argentina en el mundo"
         title="De país paria a"

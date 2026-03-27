@@ -22,8 +22,10 @@ export function ChapterPhoto({
         height={514}
         className="aspect-[21/9] w-full rounded-xl object-cover"
         style={{ objectPosition }}
+        loading="lazy"
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 52rem"
       />
-      <figcaption className="mt-3 font-accent text-[length:var(--text-xs)] text-text-tertiary">
+      <figcaption className="mt-3 font-accent text-xs text-text-tertiary">
         {caption}
       </figcaption>
     </figure>

@@ -1,9 +1,6 @@
 export function YouTubeEmbed({ videoId, title }: { videoId: string; title: string }) {
   return (
-    <div
-      className="relative mt-4 overflow-hidden rounded-lg"
-      style={{ aspectRatio: "16/9" }}
-    >
+    <div className="relative mt-4 aspect-video overflow-hidden rounded-lg">
       <iframe
         src={`https://www.youtube-nocookie.com/embed/${videoId}`}
         title={title}

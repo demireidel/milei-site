@@ -40,7 +40,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={`py-[var(--spacing-section)] ${variantClasses[variant]} ${bleedClasses} ${className}`}
+      className={`py-section ${variantClasses[variant]} ${bleedClasses} ${className}`}
       style={
         bleedTop || bleedBottom
           ? ({ "--section-bg": variantBg[variant] } as React.CSSProperties)

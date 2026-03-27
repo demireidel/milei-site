@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
@@ -6,13 +7,13 @@ import { sectionCards } from "@/data/home";
 
 export function SectionPreviews() {
   return (
-    <section className="bg-dark py-[var(--spacing-section)]">
+    <section className="bg-dark py-section">
       <Container>
         <ScrollReveal variant="blur-in">
-          <p className="badge-text mb-3 text-center tracking-[0.2em]">
+          <p className="badge-text mb-3 text-right tracking-[0.2em]">
             Explorar
           </p>
-          <h2 className="mb-12 text-center font-display text-[length:var(--text-2xl)] text-text-primary">
+          <h2 className="mb-12 text-right font-display text-2xl text-text-primary">
             La transformación, sección por sección
           </h2>
         </ScrollReveal>
@@ -25,31 +26,30 @@ export function SectionPreviews() {
               i === 0 ? "lg:col-span-2" : i === 5 ? "lg:col-span-3" : "";
             return (
               <ScrollReveal key={s.href} variant="scale-in" delay={i * 60} className={spanClass}>
-                <Link href={s.href} className="group block h-full no-underline">
-                  <Card accent hover className={`h-full ${isFeatured ? "p-8" : "p-6"}`}>
-                    {/* Stat chip — larger on featured cards */}
+                <Link href={s.href} className="card-container group block h-full no-underline">
+                  <Card accent hover className="h-full overflow-hidden p-0">
+                    {s.img && (
+                      <Image
+                        src={s.img}
+                        alt={s.imgAlt ?? ""}
+                        width={600}
+                        height={300}
+                        className="aspect-[2/1] w-full object-cover"
+                        loading="lazy"
+                      />
+                    )}
+                    <div className="p-6 @md:p-8">
+                    {/* Stat chip — responds to container width */}
                     {s.stat && (
                       <div className="mb-4 flex items-baseline gap-2">
-                        <span
-                          className={`font-accent font-bold leading-none text-gold ${
-                            isFeatured
-                              ? "text-[length:var(--text-3xl)]"
-                              : "text-[length:var(--text-xl)]"
-                          }`}
-                        >
+                        <span className="font-accent text-xl font-bold leading-none text-gold @md:text-3xl">
                           {s.stat}
                         </span>
                         <span className="stat-label">{s.statLabel}</span>
                       </div>
                     )}
 
-                    <h3
-                      className={`m-0 mb-2 font-display text-text-primary ${
-                        isFeatured
-                          ? "text-[length:var(--text-2xl)]"
-                          : "text-[length:var(--text-xl)]"
-                      }`}
-                    >
+                    <h3 className="m-0 mb-2 font-display text-xl text-text-primary @md:text-2xl">
                       {s.title}
                     </h3>
                     <p className="prose-body m-0 leading-normal">{s.desc}</p>
@@ -63,7 +63,7 @@ export function SectionPreviews() {
                         viewBox="0 0 16 16"
                         fill="none"
                         aria-hidden="true"
-                        className="transition-transform duration-[var(--duration-fast)] group-hover:translate-x-1"
+                        className="transition-transform duration-fast group-hover:translate-x-1"
                       >
                         <path
                           d="M6 3l5 5-5 5"
@@ -73,6 +73,7 @@ export function SectionPreviews() {
                           strokeLinejoin="round"
                         />
                       </svg>
+                    </div>
                     </div>
                   </Card>
                 </Link>

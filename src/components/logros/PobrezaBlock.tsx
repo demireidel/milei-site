@@ -28,7 +28,7 @@ export function PobrezaBlock({ data }: { data: PobrezaData }) {
       <p className="prose-body mb-8 max-w-[44rem]">{data.kicker}</p>
 
       {/* Headline */}
-      <h2 className="mb-10 font-display text-[length:var(--text-3xl)] text-text-primary">
+      <h2 className="mb-10 font-display text-3xl text-text-primary">
         {data.headline}
         <span className="text-gold">{data.headlineEm}</span>
         {" "}de argentinos salieron de la pobreza
@@ -65,10 +65,10 @@ export function PobrezaBlock({ data }: { data: PobrezaData }) {
             key={pill.lbl}
             className="rounded-full border border-border bg-surface-1 px-4 py-2"
           >
-            <span className="font-accent text-[length:var(--text-sm)] font-bold text-gold">
+            <span className="font-accent text-sm font-bold text-gold">
               {pill.val}
             </span>{" "}
-            <span className="text-[length:var(--text-xs)] text-text-secondary">
+            <span className="text-xs text-text-secondary">
               {pill.lbl}
             </span>
           </div>
@@ -80,8 +80,8 @@ export function PobrezaBlock({ data }: { data: PobrezaData }) {
         <div className="mb-10 max-w-[52rem]">
           {data.narrative.map((p, i) => (
             <p
-              key={i}
-              className={`text-[length:var(--text-base)] leading-relaxed text-text-secondary ${
+              key={p.slice(0, 40)}
+              className={`text-base leading-relaxed text-text-secondary ${
                 i < data.narrative.length - 1 ? "mb-5" : "m-0"
               }`}
             >

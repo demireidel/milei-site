@@ -74,10 +74,10 @@
   --color-border-before: oklch(0.75 0.01 80 / 0.4);
   --color-text-before: oklch(0.45 0.01 80);
 
-  --color-tint-after: oklch(0.96 0.005 80);
-  --color-tint-after-accent: oklch(0.94 0.008 80);
-  --color-border-after: oklch(0.55 0.17 75 / 0.6);
-  --color-text-after: oklch(0.55 0.17 75);
+  --color-tint-after: oklch(0.96 0.02 75);
+  --color-tint-after-accent: oklch(0.94 0.035 75);
+  --color-border-after: oklch(0.55 0.17 75 / 0.7);
+  --color-text-after: oklch(0.50 0.14 75);
 
   /* ── Gold on dark backgrounds (overlay/dark sections) ─── */
   --color-gold-light: oklch(0.80 0.17 85);
@@ -333,10 +333,11 @@
     padding: var(--spacing-md);
   }
 
-  /* After panel (muted cool sage) */
+  /* After panel (subtle gold wash + gold left accent) */
   .panel-after {
     background: linear-gradient(160deg, var(--color-tint-after) 0%, var(--color-tint-after-accent) 100%);
     border: 1.5px solid var(--color-border-after);
+    border-left: 3px solid var(--color-gold);
     border-radius: var(--radius-md);
     padding: var(--spacing-md);
   }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import {
   reformasHero,
   heroCounters,
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
 export default function ReformasPage() {
   return (
     <>
+      <BreadcrumbSchema name="Reformas" path="/reformas" />
       <PageHeader
         eyebrow={reformasHero.eyebrow}
         title={reformasHero.title}
