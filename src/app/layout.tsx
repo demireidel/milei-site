@@ -50,6 +50,14 @@ export const metadata: Metadata = {
     title: "Javier Milei — Presidente de la Nación Argentina",
     description:
       "Visión, logros, reformas y archivo intelectual del Presidente Javier Milei.",
+    images: [
+      {
+        url: "/images/banco/hero-balcon.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Javier Milei — Presidente de la Nación Argentina",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -60,6 +68,9 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+  },
+  alternates: {
+    canonical: "https://javiermilei.com",
   },
 };
 

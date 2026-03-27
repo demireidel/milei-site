@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Visión y Filosofía",
   description:
     "La visión filosófica y los principios que guían el gobierno del Presidente Javier Milei. Cinco capítulos sobre libertad, capitalismo, Estado, cultura y Occidente.",
+  alternates: { canonical: "https://javiermilei.com/vision" },
 };
 
 export default function VisionPage() {

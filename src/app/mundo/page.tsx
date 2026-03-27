@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Internacional",
   description:
     "Argentina en el mundo: acuerdos comerciales, relaciones bilaterales y posicionamiento global.",
+  alternates: { canonical: "https://javiermilei.com/mundo" },
 };
 
 export default function MundoPage() {

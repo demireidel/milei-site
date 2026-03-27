@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   title: "Futuro",
   description:
     "Proyectos estratégicos: Silicon Valley, Stargate AI, energía nuclear y Vaca Muerta.",
+  alternates: { canonical: "https://javiermilei.com/futuro" },
 };
 
 export default function FuturoPage() {

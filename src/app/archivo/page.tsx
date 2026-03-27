@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   title: "Archivo Intelectual",
   description:
     "Archivo intelectual: libros, artículos académicos, discursos y entrevistas del Presidente Milei.",
+  alternates: { canonical: "https://javiermilei.com/archivo" },
 };
 
 export default function ArchivoPage() {

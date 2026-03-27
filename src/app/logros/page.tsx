@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Logros",
   description:
     "Los logros concretos del gobierno del Presidente Javier Milei: reducción de pobreza, desinflación, equilibrio fiscal y más.",
+  alternates: { canonical: "https://javiermilei.com/logros" },
 };
 
 export default function LogrosPage() {

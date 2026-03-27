@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   title: "Reformas",
   description:
     "Las 12 reformas estructurales del gobierno: estabilización, desregulación, legislación y seguridad.",
+  alternates: { canonical: "https://javiermilei.com/reformas" },
 };
 
 export default function ReformasPage() {
