@@ -3,7 +3,7 @@ import type { Etapa } from "@/data/archivo";
 import { ChapterHeader } from "@/components/ui/ChapterHeader";
 import { Card } from "@/components/ui/Card";
 import { SectionArticle } from "@/components/ui/SectionArticle";
-import { ContentGrid } from "@/components/ui/ContentGrid";
+import { BentoGrid } from "@/components/ui/BentoGrid";
 
 export function LibrosSection({ etapas }: { etapas: Etapa[] }) {
   return (
@@ -16,19 +16,19 @@ export function LibrosSection({ etapas }: { etapas: Etapa[] }) {
               {etapa.label}{" "}
               <span className="text-text-tertiary">({etapa.desc})</span>
             </h3>
-            <ContentGrid cols={2}>
+            <BentoGrid>
               {etapa.books.map((book) => (
                 <Card
                   key={book.title}
                   accent={book.highlight}
-                  className="flex gap-4 p-4"
+                  className={`flex gap-4 p-4${book.highlight ? " bento-wide" : ""}`}
                 >
                   {book.cover && (
                     <Image
                       src={book.cover}
                       alt={book.title}
-                      width={64}
-                      height={96}
+                      width={120}
+                      height={180}
                       className="shrink-0 rounded-md object-cover"
                       loading="lazy"
                     />
@@ -53,7 +53,7 @@ export function LibrosSection({ etapas }: { etapas: Etapa[] }) {
                   </div>
                 </Card>
               ))}
-            </ContentGrid>
+            </BentoGrid>
           </div>
         ))}
       </div>

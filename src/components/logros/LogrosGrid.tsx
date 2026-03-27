@@ -4,6 +4,7 @@ import type { Logro, PobrezaData } from "@/data/logros";
 import { BeforeAfterCard } from "@/components/logros/BeforeAfterCard";
 import { PobrezaBlock } from "@/components/logros/PobrezaBlock";
 import { SidebarLayout } from "@/components/ui/SidebarLayout";
+import { BentoGrid } from "@/components/ui/BentoGrid";
 import { ChapterHeader } from "@/components/ui/ChapterHeader";
 import { Divider } from "@/components/ui/Divider";
 import { SectionArticle } from "@/components/ui/SectionArticle";
@@ -90,11 +91,11 @@ export function LogrosGrid({ logros, pobrezaData }: LogrosGridProps) {
             />
 
             {/* Cards grid */}
-            <div className="grid gap-5 md:grid-cols-2">
-              {blockLogros.map((logro) => (
-                <BeforeAfterCard key={logro.num} logro={logro} />
+            <BentoGrid>
+              {blockLogros.map((logro, i) => (
+                <BeforeAfterCard key={logro.num} logro={logro} featured={i === 0} />
               ))}
-            </div>
+            </BentoGrid>
           </SectionArticle>
         );
       })}

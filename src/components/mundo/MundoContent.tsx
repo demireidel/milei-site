@@ -7,6 +7,7 @@ import { ChapterHeader } from "@/components/ui/ChapterHeader";
 import { Card } from "@/components/ui/Card";
 import { SectionArticle } from "@/components/ui/SectionArticle";
 import { ContentGrid } from "@/components/ui/ContentGrid";
+import { BentoGrid } from "@/components/ui/BentoGrid";
 import { ForumCard } from "@/components/mundo/ForumCard";
 import { AgreementCard } from "@/components/mundo/AgreementCard";
 
@@ -35,9 +36,9 @@ export function MundoContent({
       {/* I — Stats */}
       <SectionArticle id="estadisticas">
         <ChapterHeader numeral="I" title="Estadísticas clave" />
-        <div className="grid grid-cols-2 gap-4">
-          {megaStats.map((stat) => (
-            <Card key={stat.label} className="p-5">
+        <BentoGrid>
+          {megaStats.map((stat, i) => (
+            <Card key={stat.label} className={`p-5${i === 0 ? " bento-hero" : ""}`}>
               <p className="stat-number m-0">{stat.value}</p>
               <p className="card-label !text-text-primary m-0 mt-2">
                 {stat.label}
@@ -47,7 +48,7 @@ export function MundoContent({
               </p>
             </Card>
           ))}
-        </div>
+        </BentoGrid>
       </SectionArticle>
 
       {/* II — Forums */}
@@ -57,11 +58,11 @@ export function MundoContent({
           title="Foros internacionales"
           subtitle={forosHeader.sectionIntro}
         />
-        <ContentGrid cols={2}>
+        <BentoGrid>
           {forumAppearances.map((forum) => (
-            <ForumCard key={forum.title} forum={forum} />
+            <ForumCard key={forum.title} forum={forum} className={forum.highlight ? "bento-wide" : ""} />
           ))}
-        </ContentGrid>
+        </BentoGrid>
       </SectionArticle>
 
       {/* III — Leaders */}
@@ -72,7 +73,7 @@ export function MundoContent({
             <Card key={l.name} className="flex items-center gap-3 px-4 py-3">
               <span className="text-2xl">{l.flag}</span>
               <div>
-                <p className="m-0 text-[length:var(--text-sm)] font-semibold text-text-primary">
+                <p className="m-0 text-sm font-semibold text-text-primary">
                   {l.name}
                 </p>
                 <p className="card-body m-0">
@@ -87,17 +88,16 @@ export function MundoContent({
       {/* IV — Timeline */}
       <SectionArticle id="cronologia">
         <ChapterHeader numeral="IV" title="Cronología diplomática" />
-        <div className="space-y-4">
-          {timeline.map((event, i) => (
-            <Card key={i} className="flex gap-4 p-4">
-              <div className="shrink-0 min-w-[5rem] pt-0.5 font-accent text-[length:var(--text-xs)] uppercase tracking-[0.05em] text-gold">
-                {event.date}
-              </div>
-              <div>
-                <h4 className="card-heading m-0 mb-1">{event.title}</h4>
+        <div className="relative ml-6 border-l-2 border-gold pl-8 space-y-4">
+          {timeline.map((event) => (
+            <div key={`${event.date}-${event.title}`} className="relative">
+              <div className="absolute -left-[calc(2rem+5px)] top-2 h-3 w-3 rounded-full bg-gold" />
+              <Card className="p-4">
+                <span className="badge-text">{event.date}</span>
+                <h4 className="card-heading mt-1 m-0 mb-1">{event.title}</h4>
                 <p className="card-body m-0">{event.desc}</p>
-              </div>
-            </Card>
+              </Card>
+            </div>
           ))}
         </div>
       </SectionArticle>

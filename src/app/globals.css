@@ -68,11 +68,16 @@
   --color-text-secondary: oklch(0.35 0.02 270);
   --color-text-tertiary: oklch(0.50 0.02 270);
 
-  /* ── Before / After Tints ──────────────────────────────── */
-  --color-tint-before: oklch(0.88 0.14 20);
-  --color-tint-after: oklch(0.88 0.16 145);
-  --color-border-before: oklch(0.50 0.22 20 / 0.75);
-  --color-border-after: oklch(0.45 0.22 145 / 0.75);
+  /* ── Before / After Tints (muted warm sepia → cool sage) ── */
+  --color-tint-before: oklch(0.94 0.03 55);
+  --color-tint-before-accent: oklch(0.92 0.05 55);
+  --color-border-before: oklch(0.70 0.06 55 / 0.5);
+  --color-text-before: oklch(0.45 0.06 55);
+
+  --color-tint-after: oklch(0.94 0.04 165);
+  --color-tint-after-accent: oklch(0.92 0.06 165);
+  --color-border-after: oklch(0.55 0.08 165 / 0.5);
+  --color-text-after: oklch(0.38 0.08 165);
 
   /* ── Gold on dark backgrounds (overlay/dark sections) ─── */
   --color-gold-light: oklch(0.80 0.17 85);
@@ -122,18 +127,16 @@
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* ── Layout ────────────────────────────────────────────── */
-  --width-content: 80rem;
-  --width-narrow: 52rem;
-  --height-nav: 4rem;
-}
-
-/* ── Duration custom properties (not @theme — used in transitions) */
-:root {
+  /* ── Transition Duration ─────────────────────────────────── */
   --duration-fast: 200ms;
   --duration-normal: 300ms;
   --duration-slow: 600ms;
   --duration-slower: 1200ms;
+
+  /* ── Layout ────────────────────────────────────────────── */
+  --width-content: 80rem;
+  --width-narrow: 52rem;
+  --height-nav: 4rem;
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -322,21 +325,25 @@
     margin: 0 0 3rem;
   }
 
-  /* Before panel (tinted red — gradient for depth) */
+  /* Before panel (muted warm sepia) */
   .panel-before {
-    background: linear-gradient(160deg, oklch(0.88 0.14 20) 0%, oklch(0.93 0.06 20) 100%);
+    background: linear-gradient(160deg, var(--color-tint-before) 0%, var(--color-tint-before-accent) 100%);
     border: 1.5px solid var(--color-border-before);
     border-radius: var(--radius-md);
     padding: var(--spacing-md);
   }
 
-  /* After panel (tinted green — gradient for depth) */
+  /* After panel (muted cool sage) */
   .panel-after {
-    background: linear-gradient(160deg, oklch(0.88 0.16 145) 0%, oklch(0.93 0.07 145) 100%);
+    background: linear-gradient(160deg, var(--color-tint-after) 0%, var(--color-tint-after-accent) 100%);
     border: 1.5px solid var(--color-border-after);
     border-radius: var(--radius-md);
     padding: var(--spacing-md);
   }
+
+  /* Semantic before/after text colors */
+  .text-before { color: var(--color-text-before); }
+  .text-after { color: var(--color-text-after); }
 
   /* Page eyebrow — section label above h1 */
   .page-eyebrow {
@@ -380,6 +387,7 @@
     align-items: baseline;
     gap: 0.75rem;
     padding: 0.5rem 0.75rem;
+    min-height: 2.5rem; /* WCAG 2.5.8 — 40px touch target */
     border-radius: var(--radius-md);
     font-size: var(--text-sm);
     color: var(--color-text-tertiary);
@@ -856,4 +864,87 @@ body::after {
 
 .animate-entrance-divider {
   transition: transform 700ms var(--ease-out-expo);
+}
+
+/* ── Bento Grid ───────────────────────────────────────────── */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+}
+
+@media (max-width: 639px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bento-hero,
+  .bento-wide {
+    grid-column: span 1;
+  }
+}
+
+.bento-hero {
+  grid-column: span 2;
+}
+
+.bento-wide {
+  grid-column: span 2;
+}
+
+.bento-tall {
+  grid-row: span 2;
+}
+
+/* ── Container Queries ─────────────────────────────────────── */
+.card-container {
+  container-type: inline-size;
+}
+
+/* ── Scroll-Driven Parallax ────────────────────────────────── */
+@keyframes parallax-up {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-30px); }
+}
+
+@supports (animation-timeline: scroll()) {
+  .parallax-scroll {
+    animation: parallax-up linear both;
+    animation-timeline: scroll();
+    animation-range: entry 0% exit 100%;
+  }
+}
+
+/* ── Granular View Transitions ─────────────────────────────── */
+::view-transition-old(navbar),
+::view-transition-new(navbar) {
+  animation: none;
+}
+
+::view-transition-old(page-header) {
+  animation: vt-exit var(--duration-normal) var(--ease-accelerate) forwards;
+}
+::view-transition-new(page-header) {
+  animation: vt-enter var(--duration-normal) var(--ease-decelerate) forwards;
+}
+
+/* ── Expandable Content (CSS-only) ─────────────────────────── */
+.expandable-content {
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
+  transition: height var(--duration-slow) var(--ease-out-expo),
+              opacity var(--duration-normal) var(--ease-standard);
+}
+
+.expandable-content[data-expanded="true"] {
+  height: calc-size(auto);
+  opacity: 1;
+}
+
+@starting-style {
+  .expandable-content[data-expanded="true"] {
+    height: 0;
+    opacity: 0;
+  }
 }

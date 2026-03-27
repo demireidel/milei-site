@@ -9,8 +9,8 @@ export function PapersSection({ papers }: { papers: Paper[] }) {
     <SectionArticle id="papers">
       <ChapterHeader numeral="IV" title="Papers académicos" />
       <ContentGrid cols={2}>
-        {papers.map((p, i) => (
-          <Card key={i} className="p-4">
+        {papers.map((p) => (
+          <Card key={p.title} className="p-4 !border-l-3 !border-l-celeste">
             <span className="card-label !text-celeste">
               {p.topic}
             </span>

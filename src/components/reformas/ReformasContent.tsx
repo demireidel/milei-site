@@ -10,6 +10,7 @@ import { ExpandableSection } from "@/components/ui/ExpandableSection";
 import { Pullquote } from "@/components/ui/Pullquote";
 import { SectionArticle } from "@/components/ui/SectionArticle";
 import { RichText } from "@/components/ui/RichText";
+import { BentoGrid } from "@/components/ui/BentoGrid";
 
 const romanNumerals = ["I", "II", "III", "IV", "V", "VI"];
 
@@ -41,7 +42,7 @@ function ReformCard({ reforma }: { reforma: Reforma }) {
       </div>
 
       <div className="px-5 pb-3 pt-4">
-        <h4 className="m-0 mb-1 font-display text-[length:var(--text-lg)] leading-[1.3] text-text-primary">
+        <h4 className="m-0 mb-1 font-display text-lg leading-[1.3] text-text-primary">
           {reforma.subtitle}
         </h4>
       </div>
@@ -53,18 +54,11 @@ function ReformCard({ reforma }: { reforma: Reforma }) {
 
         {/* Impact stats */}
         {reforma.impactStats.length > 0 && (
-          <div className="flex flex-wrap gap-3 pt-1">
+          <div className="flex flex-wrap gap-4 pt-2">
             {reforma.impactStats.map((s) => (
-              <div
-                key={s.label}
-                className="surface-card rounded-full px-3 py-1.5"
-              >
-                <span className="font-accent text-[length:var(--text-xs)] font-bold text-gold">
-                  {s.val}
-                </span>{" "}
-                <span className="text-[length:var(--text-xs)] text-text-tertiary">
-                  {s.label}
-                </span>
+              <div key={s.label} className="flex flex-col">
+                <span className="stat-number">{s.val}</span>
+                <span className="stat-label">{s.label}</span>
               </div>
             ))}
           </div>
@@ -120,11 +114,13 @@ export function ReformasContent({
               subtitle={block.subtitle}
             />
 
-            <div className="grid gap-5 md:grid-cols-2">
-              {blockReformas.map((r) => (
-                <ReformCard key={r.num} reforma={r} />
+            <BentoGrid>
+              {blockReformas.map((r, idx) => (
+                <div key={r.num} className={idx === 0 ? "bento-hero" : ""}>
+                  <ReformCard reforma={r} />
+                </div>
               ))}
-            </div>
+            </BentoGrid>
           </SectionArticle>
         );
       })}

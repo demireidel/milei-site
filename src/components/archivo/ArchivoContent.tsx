@@ -50,13 +50,13 @@ export function ArchivoContent({
       <SectionArticle id="premios" last>
         <ChapterHeader numeral="V" title="Premios y reconocimientos" />
         <ul className="m-0 list-none space-y-2 p-0">
-          {reconocimientos.map((r, i) => (
+          {reconocimientos.map((r) => (
             <li
-              key={i}
-              className="flex items-start gap-3 border-b border-border py-2"
+              key={r.slice(0, 40)}
+              className="flex items-start gap-3 rounded-lg bg-surface-2 px-4 py-3"
             >
-              <span className="mt-0.5 text-gold">&#9670;</span>
-              <span className="card-body text-[length:var(--text-sm)]">{r}</span>
+              <span className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-gold" />
+              <span className="card-body text-sm">{r}</span>
             </li>
           ))}
         </ul>

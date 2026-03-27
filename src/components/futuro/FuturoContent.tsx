@@ -28,9 +28,9 @@ const sidebarItems = [
 
 function StatRow({ stats }: { stats: FuturoStat[] }) {
   return (
-    <div className="mb-8 flex flex-wrap gap-6">
+    <div className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
       {stats.map((s) => (
-        <div key={s.label}>
+        <div key={s.label} className="surface-card p-4 border-l-3 border-l-gold">
           <span className="stat-number">{s.val}</span>
           <span className="stat-label mt-1 block">{s.label}</span>
         </div>
@@ -68,7 +68,7 @@ export function FuturoContent({
         <FeaturePhoto photo={siliconValley.photo} />
         <StatRow stats={siliconValley.stats} />
         <Prose>
-          {siliconValley.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
+          {siliconValley.paragraphs.map((p) => <p key={p.slice(0, 40)}>{p}</p>)}
         </Prose>
         <PhotoGallery photos={galleryPhotos} />
       </SectionArticle>
@@ -83,7 +83,7 @@ export function FuturoContent({
         <FeaturePhoto photo={stargate.photo} />
         <StatRow stats={stargate.stats} />
         <Prose className="mb-8">
-          {stargate.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
+          {stargate.paragraphs.map((p) => <p key={p.slice(0, 40)}>{p}</p>)}
         </Prose>
         <Pullquote cite={`— ${stargate.quote.cite}`}>
           {stargate.quote.text}
@@ -99,12 +99,17 @@ export function FuturoContent({
         <SectionKicker color="celeste">{nuclear.kicker}</SectionKicker>
         <FeaturePhoto photo={nuclear.photo} />
         <StatRow stats={nuclear.stats} />
-        <div className="mb-8 space-y-6">
+        <div className="relative mb-8 ml-6 border-l-2 border-gold pl-8 space-y-6">
           {nuclear.phases.map((phase, i) => (
-            <Card key={i} className="p-5">
-              <h4 className="badge-text m-0 mb-2 !text-gold">{phase.label}</h4>
-              <p className="prose-body m-0">{phase.text}</p>
-            </Card>
+            <div key={phase.label} className="relative">
+              <div className="absolute -left-[calc(2rem+5px)] top-1 flex h-8 w-8 items-center justify-center rounded-full bg-gold text-sm font-bold text-white">
+                {i + 1}
+              </div>
+              <Card className="p-5">
+                <h4 className="font-display text-base text-gold">{phase.label}</h4>
+                <p className="prose-body mt-2">{phase.text}</p>
+              </Card>
+            </div>
           ))}
         </div>
         <Pullquote cite={`— ${nuclear.quote.cite}`}>
@@ -123,13 +128,13 @@ export function FuturoContent({
         <FeaturePhoto photo={vacaMuerta.photo} />
         <StatRow stats={vacaMuerta.stats} />
         <Prose>
-          {vacaMuerta.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
+          {vacaMuerta.paragraphs.map((p) => <p key={p.slice(0, 40)}>{p}</p>)}
         </Prose>
       </SectionArticle>
 
       {/* Closing */}
       <div className="border-t border-border py-12 text-center">
-        <blockquote className="m-0 mx-auto max-w-[44rem] font-display text-[length:var(--text-xl)] italic text-text-primary">
+        <blockquote className="m-0 mx-auto max-w-[44rem] font-display text-xl italic text-text-primary">
           {closing.text}
         </blockquote>
         <p className="badge-text mt-4">— {closing.attr}</p>

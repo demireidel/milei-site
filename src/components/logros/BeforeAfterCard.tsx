@@ -6,8 +6,13 @@ import { Card } from "@/components/ui/Card";
 import { BeforeAfterPanel } from "@/components/ui/BeforeAfterPanel";
 import { ExpandableSection } from "@/components/ui/ExpandableSection";
 
-export function BeforeAfterCard({ logro }: { logro: Logro }) {
-  return (
+interface BeforeAfterCardProps {
+  logro: Logro;
+  featured?: boolean;
+}
+
+export function BeforeAfterCard({ logro, featured }: BeforeAfterCardProps) {
+  const card = (
     <Card className="overflow-hidden">
         {/* Banner image */}
         {logro.img && (
@@ -28,7 +33,7 @@ export function BeforeAfterCard({ logro }: { logro: Logro }) {
 
         {/* Title */}
         <div className="px-5 pb-3 pt-4">
-          <h3 className="m-0 font-display text-[length:var(--text-lg)] leading-snug text-text-primary">
+          <h3 className="m-0 font-display text-lg leading-snug text-text-primary">
             {logro.title}
           </h3>
         </div>
@@ -36,12 +41,12 @@ export function BeforeAfterCard({ logro }: { logro: Logro }) {
         {/* Before / After comparison */}
         <div className="mx-5 mb-4 grid grid-cols-2 gap-px overflow-hidden rounded-lg">
           <BeforeAfterPanel type="before" value={logro.before.val}>
-            <span className="text-[length:var(--text-xs)] leading-snug text-text-secondary">
+            <span className="text-xs leading-snug text-text-secondary">
               {logro.before.label}
             </span>
           </BeforeAfterPanel>
           <BeforeAfterPanel type="after" value={logro.after.val}>
-            <span className="text-[length:var(--text-xs)] leading-snug text-text-secondary">
+            <span className="text-xs leading-snug text-text-secondary">
               {logro.after.label}
             </span>
           </BeforeAfterPanel>
@@ -49,7 +54,7 @@ export function BeforeAfterCard({ logro }: { logro: Logro }) {
 
         {/* Callout */}
         <div className="px-5 pb-4">
-          <p className="pullquote m-0 text-[length:var(--text-sm)]">
+          <p className="pullquote m-0 text-sm">
             {logro.callout}
           </p>
         </div>
@@ -62,8 +67,8 @@ export function BeforeAfterCard({ logro }: { logro: Logro }) {
             id={`logro-detail-${logro.num}`}
           >
             <div className="space-y-3">
-              {logro.paragraphs.map((p, i) => (
-                <p key={i} className="prose-body m-0">
+              {logro.paragraphs.map((p) => (
+                <p key={p.slice(0, 40)} className="prose-body m-0">
                   {p}
                 </p>
               ))}
@@ -77,6 +82,8 @@ export function BeforeAfterCard({ logro }: { logro: Logro }) {
                     width={400}
                     height={300}
                     className="aspect-[4/3] w-full rounded-md object-cover"
+                    loading="lazy"
+                    sizes="(max-width: 640px) 45vw, 200px"
                   />
                 </div>
                 <div className="img-zoom-hover">
@@ -86,6 +93,8 @@ export function BeforeAfterCard({ logro }: { logro: Logro }) {
                     width={400}
                     height={300}
                     className="aspect-[4/3] w-full rounded-md object-cover"
+                    loading="lazy"
+                    sizes="(max-width: 640px) 45vw, 200px"
                   />
                 </div>
               </div>
@@ -94,4 +103,10 @@ export function BeforeAfterCard({ logro }: { logro: Logro }) {
         )}
       </Card>
   );
+
+  if (featured) {
+    return <div className="bento-hero [&_.stat-number]:text-3xl">{card}</div>;
+  }
+
+  return card;
 }
