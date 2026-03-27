@@ -68,16 +68,16 @@
   --color-text-secondary: oklch(0.35 0.02 270);
   --color-text-tertiary: oklch(0.50 0.02 270);
 
-  /* ── Before / After Tints (muted warm sepia → cool sage) ── */
-  --color-tint-before: oklch(0.94 0.03 55);
-  --color-tint-before-accent: oklch(0.92 0.05 55);
-  --color-border-before: oklch(0.70 0.06 55 / 0.5);
-  --color-text-before: oklch(0.45 0.06 55);
+  /* ── Before / After Tints (both neutral, gold accent on "after") ── */
+  --color-tint-before: oklch(0.96 0.005 80);
+  --color-tint-before-accent: oklch(0.94 0.008 80);
+  --color-border-before: oklch(0.75 0.01 80 / 0.4);
+  --color-text-before: oklch(0.45 0.01 80);
 
-  --color-tint-after: oklch(0.94 0.04 165);
-  --color-tint-after-accent: oklch(0.92 0.06 165);
-  --color-border-after: oklch(0.55 0.08 165 / 0.5);
-  --color-text-after: oklch(0.38 0.08 165);
+  --color-tint-after: oklch(0.96 0.005 80);
+  --color-tint-after-accent: oklch(0.94 0.008 80);
+  --color-border-after: oklch(0.55 0.17 75 / 0.6);
+  --color-text-after: oklch(0.55 0.17 75);
 
   /* ── Gold on dark backgrounds (overlay/dark sections) ─── */
   --color-gold-light: oklch(0.80 0.17 85);
