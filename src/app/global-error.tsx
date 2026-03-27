@@ -1,5 +1,7 @@
 "use client";
 
+import { reportError } from "@/lib/reportError";
+
 export default function GlobalError({
   error,
   reset,
@@ -7,8 +9,7 @@ export default function GlobalError({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  // error.digest is useful for server-side error tracking
-  void error;
+  reportError(error);
 
   return (
     <html lang="es">

@@ -1,6 +1,7 @@
 "use client";
 
 import { Container } from "@/components/ui/Container";
+import { reportError } from "@/lib/reportError";
 
 interface ErrorProps {
   error: Error & { digest?: string };
@@ -8,8 +9,7 @@ interface ErrorProps {
 }
 
 export default function Error({ error, reset }: ErrorProps) {
-  // Suppress unused-vars lint; error.digest is useful for server-side tracking
-  void error;
+  reportError(error);
 
   return (
     <section className="flex min-h-[70dvh] items-center justify-center">
@@ -26,6 +26,11 @@ export default function Error({ error, reset }: ErrorProps) {
         >
           Reintentar
         </button>
+        {error.digest && (
+          <p className="mt-4 font-mono text-[length:var(--text-xs)] text-text-tertiary">
+            Ref: {error.digest}
+          </p>
+        )}
       </Container>
     </section>
   );
