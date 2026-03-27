@@ -84,6 +84,11 @@ export function NavBar() {
         }
       };
       window.addEventListener("keydown", onKeyDown);
+      // Focus first menu link when menu opens
+      const firstLink = menuNavRef.current?.querySelector<HTMLElement>("a[href]");
+      if (firstLink) {
+        requestAnimationFrame(() => firstLink.focus());
+      }
       return () => {
         document.body.style.overflow = "";
         window.removeEventListener("keydown", onKeyDown);

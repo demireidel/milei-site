@@ -7,8 +7,7 @@ import { SidebarLayout } from "@/components/ui/SidebarLayout";
 import { ChapterHeader } from "@/components/ui/ChapterHeader";
 import { Divider } from "@/components/ui/Divider";
 import { SectionArticle } from "@/components/ui/SectionArticle";
-
-const romanNumerals = ["II", "III", "IV", "V", "VI"];
+import { toRoman } from "@/lib/roman";
 
 interface LogroBlock {
   id: string;
@@ -54,7 +53,7 @@ const sidebarItems = [
   { id: "logro-pobreza", num: "I", title: "Reducción de la pobreza" },
   ...blocks.map((b, i) => ({
     id: `logro-${b.id}`,
-    num: romanNumerals[i],
+    num: toRoman(i + 2),
     title: b.title,
   })),
 ];
@@ -85,7 +84,7 @@ export function LogrosGrid({ logros, pobrezaData }: LogrosGridProps) {
         return (
           <SectionArticle key={block.id} id={`logro-${block.id}`} last={i === blocks.length - 1}>
             <ChapterHeader
-              numeral={romanNumerals[i]}
+              numeral={toRoman(i + 2)}
               title={block.title}
               subtitle={block.subtitle}
             />

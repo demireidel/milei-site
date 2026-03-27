@@ -53,8 +53,7 @@ export function Footer() {
           <div
             className="mb-8 flex max-w-32 gap-0 overflow-hidden rounded"
             style={{ height: "4px" }}
-            aria-label="Bandera Argentina"
-            role="img"
+            aria-hidden="true"
           >
             <div className="flex-1 bg-celeste" />
             <div className="flex-1 bg-white" />

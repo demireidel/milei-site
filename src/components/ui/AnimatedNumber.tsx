@@ -41,7 +41,6 @@ export function AnimatedNumber({
       <div className="text-center" ref={ref}>
         <p
           className="stat-number m-0 leading-snug"
-          aria-live="polite"
           style={{
             transform: `scale(${scale})`,
             textShadow:
@@ -52,6 +51,9 @@ export function AnimatedNumber({
           <span className="text-[0.7em]">{suffix}</span>
         </p>
         <p className="stat-label m-0 mt-2">{label}</p>
+        <span className="sr-only" aria-live="polite">
+          {value === target ? `${display}${suffix} ${label}` : ""}
+        </span>
       </div>
     );
   }
@@ -61,7 +63,6 @@ export function AnimatedNumber({
     <div ref={ref} className="text-center">
       <p
         className="stat-number m-0 text-[length:var(--text-3xl)] leading-none"
-        aria-live="polite"
       >
         {display}
         <span className="text-[0.6em]">{suffix}</span>
@@ -74,6 +75,9 @@ export function AnimatedNumber({
           {sub}
         </p>
       )}
+      <span className="sr-only" aria-live="polite">
+        {value === target ? `${display}${suffix} ${label}` : ""}
+      </span>
     </div>
   );
 }
