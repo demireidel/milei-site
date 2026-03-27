@@ -6,8 +6,14 @@ import { useEffect, useState, type RefObject } from "react";
  * Returns a 0..1 progress value representing how far an element
  * has scrolled off the top of the viewport.
  *
- * 0 = element top at/below viewport top (fully visible)
- * 1 = element fully scrolled off-screen
+ * @param ref - React ref to the target element
+ * @returns 0 = top visible, 1 = fully off-screen
+ *
+ * @example
+ * ```tsx
+ * const ref = useRef<HTMLDivElement>(null);
+ * const progress = useScrollProgress(ref);
+ * ```
  */
 export function useScrollProgress(ref: RefObject<HTMLElement | null>): number {
   const [progress, setProgress] = useState(0);

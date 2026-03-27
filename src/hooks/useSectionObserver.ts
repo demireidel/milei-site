@@ -4,11 +4,15 @@ import { useState, useEffect } from "react";
 
 /**
  * Tracks which section is currently in view using IntersectionObserver.
- * Returns the id of the active section.
  *
- * Uses ids.join(",") as the dep expression so the effect only re-runs
- * when the actual section IDs change — not on every parent render
- * (arrays have unstable identity even when their contents are identical).
+ * @param ids - Array of element IDs to observe
+ * @param rootMargin - IntersectionObserver rootMargin (default: "-30% 0px -60% 0px")
+ * @returns The ID of the currently active section
+ *
+ * @example
+ * ```tsx
+ * const active = useSectionObserver(["section-1", "section-2"]);
+ * ```
  */
 export function useSectionObserver(
   ids: string[],

@@ -15,11 +15,15 @@ const ZERO: MousePosition = { relX: 0, relY: 0, hovering: false };
 
 /**
  * Tracks mouse position relative to an element.
- * - relX/relY: normalized -1..1 from center, stored as React state (used for 3D tilt).
- * - Absolute x/y: written directly to CSS custom props --mx/--my on the element ref —
- *   zero React re-renders per mousemove frame; gradient computed entirely by CSS.
- * - Disabled on touch devices (hover: none) to avoid performance cost.
- * - Uses RAF throttle for 60fps.
+ *
+ * @param ref - React ref to the target element
+ * @returns `{ relX, relY, hovering }` — normalized -1..1 from center
+ *
+ * @example
+ * ```tsx
+ * const ref = useRef<HTMLDivElement>(null);
+ * const { relX, relY } = useMousePosition(ref);
+ * ```
  */
 export function useMousePosition(ref: RefObject<HTMLElement | null>): MousePosition {
   const [pos, setPos] = useState<MousePosition>(ZERO);

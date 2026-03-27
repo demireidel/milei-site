@@ -11,8 +11,13 @@ interface UseAnimatedNumberOptions {
 
 /**
  * Animates a number from 0 → target when the element enters the viewport.
- * Exponential ease-out for a premium feel.
- * RAF id stored in ref so in-flight animation can be cancelled on unmount.
+ * Uses exponential ease-out for a premium feel.
+ *
+ * @param options.target - Target number to animate to (must be >= 0)
+ * @param options.duration - Animation duration in ms (default: 1800)
+ * @param options.threshold - IntersectionObserver threshold (default: 0.3)
+ * @param options.decimals - Decimal places to display (default: 0)
+ * @returns `{ ref, value, display }` — ref to attach, current value, formatted string
  */
 export function useAnimatedNumber({
   target,
