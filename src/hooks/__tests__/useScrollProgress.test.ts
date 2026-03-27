@@ -4,23 +4,18 @@ import { useRef } from "react";
 import { useScrollProgress } from "../useScrollProgress";
 
 beforeEach(() => {
-  // Mock matchMedia — default: no reduced motion
+  vi.useFakeTimers();
+
   vi.stubGlobal("matchMedia", vi.fn((query: string) => ({
     matches: query.includes("reduce") ? false : false,
     media: query,
     addEventListener: vi.fn(),
     removeEventListener: vi.fn(),
   })));
-
-  // Mock requestAnimationFrame to run synchronously
-  vi.stubGlobal("requestAnimationFrame", vi.fn((cb: FrameRequestCallback) => {
-    cb(0);
-    return 0;
-  }));
-  vi.stubGlobal("cancelAnimationFrame", vi.fn());
 });
 
 afterEach(() => {
+  vi.useRealTimers();
   vi.unstubAllGlobals();
 });
 
