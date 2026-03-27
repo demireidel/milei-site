@@ -77,7 +77,7 @@ export function PageHeader({
       )}
       <Container className={backgroundImage ? "relative z-10" : ""}>
       {/* Force light-on-dark text for pages with background images */}
-      <div className={`pl-4 sm:pl-12 md:pl-20${backgroundImage ? " section-light-text" : ""}`}>
+      <div className={backgroundImage ? "section-light-text" : undefined}>
         {/* Eyebrow — slide in from right */}
         <p
           className="page-eyebrow"
