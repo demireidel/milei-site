@@ -850,6 +850,30 @@ body::after {
   transition: opacity 600ms var(--ease-out-expo), transform 600ms var(--ease-out-expo);
 }
 
+.animate-entrance-fade-slow {
+  transition: opacity 700ms var(--ease-out-expo), transform 700ms var(--ease-out-expo);
+}
+
+/* Hero title text shadow */
+.hero-title-text {
+  text-shadow: 0 4px 48px oklch(0 0 0 / 0.6);
+}
+
+/* Stat number gold glow */
+.stat-number-glow {
+  text-shadow: 0 0 40px color-mix(in oklch, var(--color-gold-light), transparent 80%);
+}
+
+/* ForumCard gradient overlay */
+.forum-card-overlay {
+  background: linear-gradient(to top, color-mix(in oklch, var(--color-overlay-dark), transparent 20%) 0%, transparent 50%);
+}
+
+/* PageHeader background overlay */
+.page-header-overlay {
+  background: linear-gradient(to bottom, color-mix(in oklch, var(--color-overlay-dark), transparent 45%) 0%, color-mix(in oklch, var(--color-overlay-dark), transparent 5%) 100%);
+}
+
 .animate-entrance-clip {
   transition: clip-path 800ms var(--ease-out-expo);
 }

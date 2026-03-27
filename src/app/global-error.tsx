@@ -13,36 +13,17 @@ export default function GlobalError({
 
   return (
     <html lang="es">
-      <body
-        style={{
-          background: "#0a0a0f",
-          color: "rgba(255,255,255,0.92)",
-          fontFamily: "system-ui, sans-serif",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          minHeight: "100dvh",
-          textAlign: "center",
-        }}
-      >
+      <body className="flex min-h-dvh items-center justify-center bg-[#0a0a0f] text-center font-[system-ui,sans-serif] text-white/[0.92]">
         <div>
-          <h1 style={{ fontSize: "2rem", marginBottom: "1rem" }}>
+          <h1 className="mb-4 text-[2rem]">
             Error crítico
           </h1>
-          <p style={{ opacity: 0.6, marginBottom: "2rem" }}>
+          <p className="mb-8 opacity-60">
             Ocurrió un error grave. Intentá recargar la página.
           </p>
           <button
             onClick={reset}
-            style={{
-              background: "#b8860b",   /* --color-gold-hex */
-              color: "#0a0a0f",
-              border: "none",
-              padding: "0.75rem 2rem",
-              borderRadius: "0.75rem",
-              fontWeight: 600,
-              cursor: "pointer",
-            }}
+            className="cursor-pointer rounded-xl border-none bg-[#b8860b] px-8 py-3 font-semibold text-[#0a0a0f]"
           >
             Reintentar
           </button>

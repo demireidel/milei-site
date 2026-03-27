@@ -27,15 +27,18 @@ export function PageHeader({
   const sectionRef = useRef<HTMLDivElement>(null);
   const scrollProgress = useScrollProgress(sectionRef);
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [cssScrollTimeline, setCssScrollTimeline] = useState(false);
 
   useEffect(() => {
     setReducedMotion(
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
     );
+    setCssScrollTimeline(CSS.supports("animation-timeline", "scroll()"));
   }, []);
 
-  // Parallax for background image
-  const parallaxY = reducedMotion ? 0 : scrollProgress * -30;
+  // Parallax: prefer CSS scroll-driven animation when supported, JS fallback otherwise
+  const useJsParallax = !cssScrollTimeline && !reducedMotion;
+  const parallaxY = useJsParallax ? scrollProgress * -30 : 0;
 
   // Split title into words for staggered reveal
   const titleWords = title.split(" ");
@@ -47,6 +50,7 @@ export function PageHeader({
     <section
       ref={sectionRef}
       className={`pb-12 pt-14 md:pt-18${backgroundImage ? " relative overflow-hidden" : ""}`}
+      style={{ viewTransitionName: "page-header" }}
     >
       {backgroundImage && (
         <>
@@ -55,20 +59,19 @@ export function PageHeader({
             alt={backgroundAlt || ""}
             fill
             sizes="100vw"
-            className="object-cover"
-            style={{
-              opacity: 0.4,
-              transform: `translateY(${parallaxY}px)`,
-              willChange: scrollProgress > 0 ? "transform" : undefined,
-            }}
+            className={`object-cover opacity-40${cssScrollTimeline && !reducedMotion ? " parallax-scroll" : ""}`}
+            style={
+              useJsParallax
+                ? {
+                    transform: `translateY(${parallaxY}px)`,
+                    willChange: scrollProgress > 0 ? "transform" : undefined,
+                  }
+                : undefined
+            }
             priority
           />
           <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(to bottom, color-mix(in oklch, var(--color-overlay-dark), transparent 45%) 0%, color-mix(in oklch, var(--color-overlay-dark), transparent 5%) 100%)",
-            }}
+            className="page-header-overlay absolute inset-0"
           />
         </>
       )}

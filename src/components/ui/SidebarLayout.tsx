@@ -25,14 +25,14 @@ export function SidebarLayout({
   variant = "dark",
   children,
 }: SidebarLayoutProps) {
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const sectionIds = useMemo(() => items.map((item) => item.id), [items.map((i) => i.id).join(",")]);
+  const itemIds = items.map((i) => i.id).join(",");
+  const sectionIds = useMemo(() => items.map((item) => item.id), [itemIds]);
   const active = useSectionObserver(sectionIds);
 
   const bg = variant === "navy" ? "bg-navy" : "bg-dark";
 
   return (
-    <section className={`${bg} py-[var(--spacing-section)]`}>
+    <section className={`${bg} py-section`}>
       <Container wide>
         <div className="flex gap-12">
           {/* Sticky sidebar — desktop only */}
@@ -83,7 +83,7 @@ export function SidebarLayout({
           </nav>
 
           {/* Main content */}
-          <div className="min-w-0 max-w-[var(--width-narrow)] flex-1">
+          <div className="min-w-0 max-w-narrow flex-1">
             {children}
           </div>
         </div>

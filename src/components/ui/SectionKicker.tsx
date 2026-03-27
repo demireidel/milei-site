@@ -6,8 +6,7 @@ interface SectionKickerProps {
 export function SectionKicker({ children, color = "gold" }: SectionKickerProps) {
   return (
     <p
-      className="section-kicker"
-      style={color === "celeste" ? { color: "var(--color-celeste)" } : undefined}
+      className={`section-kicker${color === "celeste" ? " !text-celeste" : ""}`}
     >
       {children}
     </p>

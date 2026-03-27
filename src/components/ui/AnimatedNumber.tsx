@@ -40,11 +40,9 @@ export function AnimatedNumber({
     return (
       <div className="text-center" ref={ref}>
         <p
-          className="stat-number m-0 leading-snug"
+          className="stat-number stat-number-glow m-0 leading-snug"
           style={{
             transform: `scale(${scale})`,
-            textShadow:
-              "0 0 40px color-mix(in oklch, var(--color-gold-light), transparent 80%)",
           }}
         >
           {display}
@@ -62,16 +60,16 @@ export function AnimatedNumber({
   return (
     <div ref={ref} className="text-center">
       <p
-        className="stat-number m-0 text-[length:var(--text-3xl)] leading-none"
+        className="stat-number m-0 text-3xl leading-none"
       >
         {display}
         <span className="text-[0.6em]">{suffix}</span>
       </p>
-      <p className="m-0 mt-2 font-accent text-[length:var(--text-sm)] uppercase tracking-wide text-text-primary">
+      <p className="m-0 mt-2 font-accent text-sm uppercase tracking-wide text-text-primary">
         {label}
       </p>
       {sub && (
-        <p className="m-0 mx-auto mt-1 max-w-64 text-[length:var(--text-xs)] text-text-tertiary">
+        <p className="m-0 mx-auto mt-1 max-w-64 text-xs text-text-tertiary">
           {sub}
         </p>
       )}

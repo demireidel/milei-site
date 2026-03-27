@@ -42,11 +42,7 @@ export function Divider({ className = "", animated = true }: DividerProps) {
   return (
     <hr
       ref={ref}
-      className={`divider-animated ${className}`}
-      style={{
-        transform: visible ? "scaleX(1)" : "scaleX(0)",
-        transition: "transform 800ms var(--ease-out-expo)",
-      }}
+      className={`divider-animated transition-transform duration-[800ms] ease-[var(--ease-out-expo)] ${visible ? "scale-x-100" : "scale-x-0"} ${className}`}
     />
   );
 }

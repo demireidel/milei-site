@@ -21,6 +21,13 @@ export function PhotoStrip({ photos, direction }: PhotoStripProps) {
   const [isDragging, setIsDragging] = useState(false);
 
   const inView = useRef(false);
+  const prefersReducedMotion = useRef(false);
+
+  useEffect(() => {
+    prefersReducedMotion.current = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+  }, []);
 
   const anim = useRef({
     offset: 0,
@@ -56,7 +63,7 @@ export function PhotoStrip({ photos, direction }: PhotoStripProps) {
 
   const tick = useCallback(() => {
     const a = anim.current;
-    if (!a.dragging && !a.hovering && inView.current) {
+    if (!a.dragging && !a.hovering && inView.current && !prefersReducedMotion.current) {
       a.offset = wrapOffset(a.offset + a.speed);
       applyTransform(a.offset);
     }
@@ -131,21 +138,46 @@ export function PhotoStrip({ photos, direction }: PhotoStripProps) {
     anim.current.hovering = false;
   }, []);
 
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
+      const step = 300;
+      if (e.key === "ArrowRight") {
+        e.preventDefault();
+        anim.current.offset = wrapOffset(anim.current.offset - step);
+        applyTransform(anim.current.offset);
+      } else if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        anim.current.offset = wrapOffset(anim.current.offset + step);
+        applyTransform(anim.current.offset);
+      }
+    },
+    [wrapOffset, applyTransform]
+  );
+
+  const scrollByAmount = useCallback(
+    (delta: number) => {
+      anim.current.offset = wrapOffset(anim.current.offset + delta);
+      applyTransform(anim.current.offset);
+    },
+    [wrapOffset, applyTransform]
+  );
+
   return (
     <div
       ref={wrapperRef}
       role="region"
-      aria-label="Galería de fotos — arrastrá o deslizá para ver más"
-      className={`select-none overflow-hidden bg-dark py-[var(--spacing-xs)] ${
+      aria-label="Galería de fotos — usá las flechas o arrastrá para ver más"
+      tabIndex={0}
+      className={`group/strip relative touch-pan-y select-none overflow-hidden bg-dark py-xs ${
         isDragging ? "cursor-grabbing" : "cursor-grab"
       }`}
-      style={{ touchAction: "pan-y" }}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
       onPointerCancel={handlePointerUp}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onKeyDown={handleKeyDown}
     >
       <div ref={stripRef} className="flex w-max gap-3">
         {doubled.map((p, i) => (
@@ -161,6 +193,24 @@ export function PhotoStrip({ photos, direction }: PhotoStripProps) {
           />
         ))}
       </div>
+
+      {/* Navigation buttons — visible on hover / focus-within for WCAG 2.5.7 */}
+      <button
+        type="button"
+        aria-label="Foto anterior"
+        onClick={() => scrollByAmount(300)}
+        className="absolute left-2 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-surface-3 text-on-surface opacity-0 shadow-md transition-opacity focus:opacity-100 group-hover/strip:opacity-100"
+      >
+        <span aria-hidden="true">&larr;</span>
+      </button>
+      <button
+        type="button"
+        aria-label="Foto siguiente"
+        onClick={() => scrollByAmount(-300)}
+        className="absolute right-2 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-surface-3 text-on-surface opacity-0 shadow-md transition-opacity focus:opacity-100 group-hover/strip:opacity-100"
+      >
+        <span aria-hidden="true">&rarr;</span>
+      </button>
     </div>
   );
 }

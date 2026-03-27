@@ -24,11 +24,7 @@ export function ForumCard({ forum, className }: ForumCardProps) {
           </span>
         )}
         <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to top, color-mix(in oklch, var(--color-overlay-dark), transparent 20%) 0%, transparent 50%)",
-          }}
+          className="forum-card-overlay absolute inset-0"
         />
         <div className="absolute bottom-3 left-4 right-4">
           <span className="font-accent text-xs uppercase tracking-[0.1em] text-[var(--color-gold-light)]">

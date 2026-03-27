@@ -83,13 +83,21 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-const schemaOrg = {
+const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Javier Milei",
   url: "https://javiermilei.com",
+  image: "https://javiermilei.com/images/banco/hero-balcon.jpg",
+  description:
+    "Presidente de la Nación Argentina. Economista, escritor y político.",
   jobTitle: "Presidente de la Nación Argentina",
   nationality: "Argentine",
+  sameAs: [
+    "https://x.com/JMilei",
+    "https://www.instagram.com/jaabormiilei",
+    "https://www.youtube.com/@JavierMilei",
+  ],
   affiliation: {
     "@type": "Organization",
     name: "La Libertad Avanza",
@@ -108,6 +116,31 @@ const schemaOrg = {
   },
 } as const;
 
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Javier Milei — Presidente de la Nación Argentina",
+  url: "https://javiermilei.com",
+} as const;
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "GovernmentOrganization",
+  name: "Presidencia de la Nación Argentina",
+  alternateName: "Gobierno de Javier Milei",
+  url: "https://javiermilei.com",
+  logo: "https://javiermilei.com/images/og-image.jpg",
+  sameAs: [
+    "https://x.com/JMilei",
+    "https://www.instagram.com/javiermilei/",
+  ],
+  leader: {
+    "@type": "Person",
+    name: "Javier Milei",
+    jobTitle: "Presidente de la Nación Argentina",
+  },
+} as const;
+
 export default function RootLayout({
   children,
 }: {
@@ -121,10 +154,20 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
         <a href="#main-content" className="skip-link">
           Ir al contenido principal
         </a>
