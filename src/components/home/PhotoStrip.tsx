@@ -92,7 +92,7 @@ export function PhotoStrip({ photos, direction }: PhotoStripProps) {
     return () => window.removeEventListener("resize", handleResize);
   }, [wrapOffset, applyTransform]);
 
-  const handlePointerDown = useCallback((e: React.PointerEvent) => {
+  const handlePointerDown = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
     if (!wrapperRef.current) return;
     e.preventDefault();
     const a = anim.current;
@@ -104,7 +104,7 @@ export function PhotoStrip({ photos, direction }: PhotoStripProps) {
   }, []);
 
   const handlePointerMove = useCallback(
-    (e: React.PointerEvent) => {
+    (e: React.PointerEvent<HTMLDivElement>) => {
       const a = anim.current;
       if (!a.dragging) return;
       e.preventDefault();
@@ -115,7 +115,7 @@ export function PhotoStrip({ photos, direction }: PhotoStripProps) {
     [wrapOffset, applyTransform]
   );
 
-  const handlePointerUp = useCallback((e: React.PointerEvent) => {
+  const handlePointerUp = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
     const a = anim.current;
     if (!a.dragging) return;
     a.dragging = false;

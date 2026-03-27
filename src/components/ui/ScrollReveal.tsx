@@ -44,8 +44,7 @@ interface ScrollRevealProps {
   threshold?: number;
   once?: boolean;
   className?: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  as?: ElementType<any>;
+  as?: ElementType;
 }
 
 export function ScrollReveal({

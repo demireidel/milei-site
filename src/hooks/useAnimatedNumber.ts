@@ -20,6 +20,10 @@ export function useAnimatedNumber({
   threshold = 0.3,
   decimals = 0,
 }: UseAnimatedNumberOptions) {
+  if (process.env.NODE_ENV !== "production") {
+    if (target < 0) console.warn("useAnimatedNumber: target must be >= 0, got", target);
+    if (duration <= 0) console.warn("useAnimatedNumber: duration must be > 0, got", duration);
+  }
   const ref = useRef<HTMLDivElement>(null);
   const [value, setValue] = useState(0);
   const hasAnimated = useRef(false);
