@@ -9,6 +9,7 @@ import { BeforeAfterPanel } from "@/components/ui/BeforeAfterPanel";
 import { ExpandableSection } from "@/components/ui/ExpandableSection";
 import { Pullquote } from "@/components/ui/Pullquote";
 import { SectionArticle } from "@/components/ui/SectionArticle";
+import { RichText } from "@/components/ui/RichText";
 
 const romanNumerals = ["I", "II", "III", "IV", "V", "VI"];
 
@@ -47,8 +48,8 @@ function ReformCard({ reforma }: { reforma: Reforma }) {
 
       {/* ANTES / AHORA */}
       <div className="space-y-3 px-5 pb-4">
-        <BeforeAfterPanel type="before">{reforma.antes}</BeforeAfterPanel>
-        <BeforeAfterPanel type="after">{reforma.ahora}</BeforeAfterPanel>
+        <BeforeAfterPanel type="before"><RichText text={reforma.antes} /></BeforeAfterPanel>
+        <BeforeAfterPanel type="after"><RichText text={reforma.ahora} /></BeforeAfterPanel>
 
         {/* Impact stats */}
         {reforma.impactStats.length > 0 && (
@@ -76,7 +77,7 @@ function ReformCard({ reforma }: { reforma: Reforma }) {
         labelExpanded="Cerrar"
         id={`reforma-detail-${reforma.num}`}
       >
-        <div className="prose-body">{reforma.impactText}</div>
+        <div className="prose-body"><RichText text={reforma.impactText} /></div>
         {reforma.quote && (
           <Pullquote cite={`— ${reforma.quote.cite}`}>
             {reforma.quote.text}
