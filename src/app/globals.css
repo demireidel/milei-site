@@ -52,9 +52,6 @@
   --color-lla-deep: #280071;
   --color-lla-indigo: #250E62;
 
-  /* ── Semantic Colors ───────────────────────────────────── */
-  --color-success: #51cf66;
-  --color-danger: #ff6b6b;
 
   /* ── Surface System (light layers) ──────────────────────── */
   --color-surface-1: oklch(0 0 0 / 0.03);

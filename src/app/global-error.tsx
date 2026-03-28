@@ -13,7 +13,7 @@ export default function GlobalError({
 
   return (
     <html lang="es">
-      <body className="flex min-h-dvh items-center justify-center bg-[#0a0a0f] text-center font-[system-ui,sans-serif] text-white/[0.92]">
+      <body className="flex min-h-dvh items-center justify-center bg-[var(--color-cream)] text-center font-[system-ui,sans-serif] text-white/[0.92]">
         <div>
           <h1 className="mb-4 text-[2rem]">
             Error crítico
@@ -23,7 +23,7 @@ export default function GlobalError({
           </p>
           <button
             onClick={reset}
-            className="cursor-pointer rounded-xl border-none bg-[#b8860b] px-8 py-3 font-semibold text-[#0a0a0f]"
+            className="cursor-pointer rounded-xl border-none bg-[var(--color-gold-hex)] px-8 py-3 font-semibold text-[var(--color-cream)]"
           >
             Reintentar
           </button>
