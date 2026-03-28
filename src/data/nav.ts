@@ -11,5 +11,6 @@ export const navLinks: NavLink[] = [
   { href: "/reformas", label: "Reformas" },
   { href: "/futuro", label: "Futuro" },
   { href: "/mundo", label: "Mundo" },
+  { href: "/investigacion", label: "Investigación" },
   { href: "/archivo", label: "Archivo" },
 ];

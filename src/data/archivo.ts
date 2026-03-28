@@ -300,3 +300,87 @@ export const conversionQuote = {
 } as const;
 
 export const edicionesNote = "Ediciones internacionales en portugués (Viva a Liberdade, Carajo!), inglés (The End of Inflation) y español peninsular (El Camino del Libertario, Deusto 2024). Prólogos en obras colectivas como De Viena a Madrid: Ensayos en Honor de Jesús Huerta de Soto (Unión Editorial), coordinado por Philipp Bagus." as const;
+
+// ── Investigación Milei-Reidel ───────────────────────────
+
+export interface ResearchPaper {
+  id: string;
+  title: string;
+  subtitle?: string;
+  authors: string;
+  year: string;
+  abstract: string;
+  keyResults: string[];
+  pdfPath?: string;
+}
+
+export const researchPapers: ResearchPaper[] = [
+  {
+    id: "minimum-viable-scale",
+    title: "Minimum Viable Scale and Local Activation in Nonconcave Growth",
+    authors: "Javier Milei & Demian Reidel",
+    year: "2026",
+    abstract: "Modelo Ramsey con oferta laboral endógena y tecnología CES homogénea de grado θ. En el régimen de pliegue (θ > 1 y σ < 1), la restricción de Euler en estado estacionario genera una escala laboral mínima viable en forma cerrada. Por debajo de ese umbral no existe estado estacionario interior. Por encima, coexisten típicamente dos estados estacionarios: uno de alta productividad y otro de baja productividad, separados por una brecha cuantitativa de hasta 7× en producto.",
+    keyResults: [
+      "Escala mínima viable en forma cerrada: L_min = (D / φ_K^max)^(1/(θ-1))",
+      "Multiplicidad de estados estacionarios: dos ramas interiores separadas por un factor ~7× en producto",
+      "Amplificador de cuña: un shock de +10% en D eleva L_min en +46%; +40% la lleva a +284%",
+      "Teoría dinámica local: activación, histéresis y recuperación en dos umbrales (D_F y D_SN)",
+    ],
+    pdfPath: "/papers/minimum-viable-scale.pdf",
+  },
+  {
+    id: "scale-fragmenting-regulation",
+    title: "When Scale-Fragmenting Regulation Kills Growth",
+    subtitle: "A No-Fold-Crossing Test for Increasing-Returns Sectors",
+    authors: "Javier Milei & Demian Reidel",
+    year: "2026",
+    abstract: "Los rendimientos crecientes a escala (IRS) se tratan como justificación automática de intervención estructural. Ese silogismo es demasiado rápido. En un modelo Ramsey-CES compañero, IRS implican una escala mínima viable: por debajo de ella la economía no puede sostener el equilibrio de alta productividad. Este paper desarrolla las implicancias de política: formaliza un test de no-cruce-del-pliegue para remedios regulatorios y demuestra que la regulación que fragmenta escala es presuntivamente peligrosa salvo que el regulador pueda demostrar ex ante que es fold-safe.",
+    keyResults: [
+      "IRS no son un teorema de monopolio — son una propiedad tecnológica, no una estructura de mercado",
+      "Taxonomía de tres categorías: remedios de conducta (favorables), acceso preservando escala (usualmente favorables), fragmentación estructural (peligrosa salvo prueba fold-safe)",
+      "Test de no-cruce-del-pliegue: un remedio es admisible solo si el headroom post-remedio h_r ≥ s",
+      "Casos históricos: British Rail (fragmentación destruyó complementariedades), California (reestructuración eléctrica amplificó cuñas), Google 2025 (el tribunal eligió remedios de conducta sobre divestiture)",
+    ],
+    pdfPath: "/papers/when-regulation-kills-growth.pdf",
+  },
+];
+
+/** Amplifier table data from paper — Table 1 */
+export const amplifierData = [
+  { shock: "+10%", newLmin: "0.37", change: "+46%" },
+  { shock: "+25%", newLmin: "0.61", change: "+144%" },
+  { shock: "+40%", newLmin: "0.96", change: "+284%" },
+] as const;
+
+/** Remedy taxonomy from paper — Table 2 */
+export const remedyTaxonomy = [
+  {
+    type: "Remedios de conducta",
+    examples: "Exclusividad, tying, self-preferencing, contratos discriminatorios",
+    effectScale: "Sin cambio",
+    presumption: "Favorable",
+    safe: true,
+  },
+  {
+    type: "Acceso preservando escala",
+    examples: "Interoperabilidad, portabilidad de datos, acceso abierto",
+    effectScale: "Pequeño o nulo si bien diseñado",
+    presumption: "Favorable con verificación",
+    safe: true,
+  },
+  {
+    type: "Fragmentación estructural",
+    examples: "Breakups, separación forzosa, límites de tamaño de red",
+    effectScale: "Reduce productividad del capital",
+    presumption: "Peligrosa salvo prueba fold-safe",
+    safe: false,
+  },
+] as const;
+
+export const archivoStats = [
+  { target: 9, suffix: "", label: "Libros publicados", sub: "Del aula universitaria a bestseller internacional" },
+  { target: 7, suffix: "", label: "Papers académicos", sub: "Rigor técnico excepcional en política monetaria" },
+  { target: 11, suffix: "", label: "Discursos globales", sub: "De Davos a la ONU — foros que redefinieron el debate" },
+  { target: 410, suffix: "M+", label: "Visualizaciones", sub: "Audiencias de cientos de millones en entrevistas" },
+] as const;
