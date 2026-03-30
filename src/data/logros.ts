@@ -72,8 +72,8 @@ export const pobrezaData: PobrezaData = {
   ],
   quote: "«Robar está mal, pero robarle el pan de la boca a los más vulnerables, haciéndolos esclavos para amasar poder, excede a cualquier adjetivo que se pueda encontrar en el diccionario.»",
   quoteAttr: "— Milei, Congreso 2026",
-  img: "/images/banco/hero-balcon.jpg",
-  imgAlt: "Milei ante la multitud en el balcón de Casa Rosada — asunción presidencial, diciembre 2023",
+  img: "/images/banco/apertura-sesiones-2024.jpg",
+  imgAlt: "Milei en la apertura de sesiones del Congreso 2024 — la promesa de reducir la pobreza",
 };
 
 export interface BeforeAfter {
@@ -116,8 +116,8 @@ export const logros: Logro[] = [
     imgAfter: "/logros/02-despues.png",
     altBefore: "Pesos argentinos quemándose, hiperinflación",
     altAfter: "Bosques de Palermo, familias disfrutando",
-    img: "/images/banco/inauguracion-discurso-congreso.jpg",
-    imgAlt: "Milei en el discurso inaugural ante el Congreso, asumiendo el desafío de evitar la hiperinflación",
+    img: "/images/banco/apertura-congreso-2025.jpg",
+    imgAlt: "Milei en la apertura de sesiones del Congreso 2025 — la hiperinflación ya es historia",
   },
   {
     num: "03",
@@ -285,8 +285,8 @@ export const logros: Logro[] = [
     imgAfter: "/logros/11-despues.png",
     altBefore: "Puerto vacío, comercio paralizado",
     altAfter: "Puerto de Buenos Aires con contenedores, exportaciones récord",
-    img: "/images/banco/mercosur-ue-firma.jpg",
-    imgAlt: "Firma del acuerdo Mercosur-UE — apertura de mercados para exportaciones récord",
+    img: "/images/banco/mercosur-efta.jpg",
+    imgAlt: "Milei en la firma del TLC Mercosur-EFTA — apertura de mercados para exportaciones récord",
     reverse: true,
   },
   {
@@ -324,8 +324,8 @@ export const logros: Logro[] = [
     imgAfter: "/logros/13-despues.png",
     altBefore: "Billete de mil pesos arrugado, salarios licuados",
     altAfter: "Familia en supermercado con carrito lleno, poder adquisitivo",
-    img: "/images/banco/inauguracion-convertible-karina.jpg",
-    imgAlt: "Milei e inauguration — una nueva era de estabilidad y recuperación del poder adquisitivo",
+    img: "/images/banco/cordoba-25mayo-gabinete.jpg",
+    imgAlt: "Milei y el gabinete en Córdoba — una nueva era de estabilidad y recuperación del poder adquisitivo",
     reverse: true,
   },
   {

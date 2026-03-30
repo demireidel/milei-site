@@ -25,7 +25,7 @@ export function BeforeAfterPanel({
         {label ?? defaultLabel}
       </span>
       {value && (
-        <span className={`stat-number ${valueColor}`}>{value}</span>
+        <span className={`stat-number !text-lg sm:!text-2xl break-words ${valueColor}`}>{value}</span>
       )}
       {children && (
         <div className="prose-body mt-1">{children}</div>

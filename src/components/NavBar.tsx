@@ -101,6 +101,8 @@ export function NavBar() {
 
   const toggleMenu = useCallback(() => setMenuOpen((v) => !v), []);
 
+  const isHome = pathname === "/";
+
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
@@ -126,13 +128,13 @@ export function NavBar() {
             className="flex items-center no-underline"
             aria-label="Inicio — Javier Milei"
           >
-            <Wordmark className="text-xl tracking-[0.1em]" />
+            <Wordmark className="text-xl tracking-[0.1em]" light={isHome && !scrolled} />
           </Link>
 
           {/* Desktop links */}
           <ul
             ref={navListRef}
-            className="relative m-0 hidden list-none items-center gap-1 p-0 md:flex"
+            className="relative m-0 hidden list-none items-center gap-0.5 rounded-full bg-black/80 px-1.5 py-1 shadow-lg backdrop-blur-md md:flex"
           >
             {navLinks.map((link) => (
               <li key={link.href}>
@@ -141,10 +143,10 @@ export function NavBar() {
                     if (el) linkRefs.current.set(link.href, el);
                   }}
                   href={link.href}
-                  className={`relative px-3 py-2 font-body text-sm font-medium no-underline transition-colors duration-fast ${
+                  className={`relative rounded-full px-3 py-1.5 font-body text-sm font-medium no-underline transition-colors duration-fast ${
                     isActive(link.href)
                       ? "text-gold"
-                      : "text-text-secondary hover:text-text-primary"
+                      : "text-white/75 hover:text-white"
                   }`}
                   {...(isActive(link.href) ? { "aria-current": "page" as const } : {})}
                 >
@@ -172,22 +174,22 @@ export function NavBar() {
           <button
             ref={hamburgerRef}
             onClick={toggleMenu}
-            className="flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-full border border-white/15 bg-white/10 backdrop-blur-sm transition-colors duration-fast hover:bg-white/15 md:hidden"
+            className="flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-full border border-text-primary/20 bg-text-primary/90 shadow-md transition-colors duration-fast hover:bg-text-primary md:hidden"
             aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={menuOpen}
           >
             <span
-              className={`block h-0.5 w-5 bg-white transition-all duration-fast ${
+              className={`block h-0.5 w-5 bg-[var(--color-dark-hex)] transition-all duration-fast ${
                 menuOpen ? "translate-y-[4px] rotate-45" : ""
               }`}
             />
             <span
-              className={`block h-0.5 w-5 bg-white transition-all duration-fast ${
+              className={`block h-0.5 w-5 bg-[var(--color-dark-hex)] transition-all duration-fast ${
                 menuOpen ? "opacity-0" : "opacity-100"
               }`}
             />
             <span
-              className={`block h-0.5 w-5 bg-white transition-all duration-fast ${
+              className={`block h-0.5 w-5 bg-[var(--color-dark-hex)] transition-all duration-fast ${
                 menuOpen ? "-translate-y-[4px] -rotate-45" : ""
               }`}
             />

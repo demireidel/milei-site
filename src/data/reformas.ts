@@ -300,7 +300,7 @@ export const reformas: Reforma[] = [
       text: "Hace 21 años Chávez gritó «ALCA, al carajo» y el kirchnerismo festejó. Nosotros firmamos con Estados Unidos, con la Unión Europea, y vamos a seguir firmando con el mundo entero.",
       cite: "— Tras la ratificación del acuerdo Mercosur-UE, febrero 2026",
     },
-    img: "/images/banco/mercosur-ue-firma.jpg",
+    img: "/images/banco/mercosur-ue-escenario.jpg",
     imgAlt: "Firma del acuerdo Mercosur-UE — apertura comercial",
   },
 
@@ -371,7 +371,7 @@ export const reformas: Reforma[] = [
       text: "Reformamos la Ley Penal Juvenil, modificando un régimen penal obsoleto que tenía ya 45 años de antigüedad. Porque, como lo dijimos antes de ser gobierno, el que las hace, las paga.",
       cite: "— Apertura de sesiones ordinarias, 1 de marzo de 2026",
     },
-    img: "/images/banco/inauguracion-discurso-congreso.jpg",
+    img: "/images/banco/apertura-congreso-2025.jpg",
     imgAlt: "Sesión del Congreso — reforma penal juvenil",
   },
 ];

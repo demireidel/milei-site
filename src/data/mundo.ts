@@ -353,8 +353,8 @@ export const tradeAgreements: TradeAgreement[] = [
       { text: "100K tn carne bovina cuota libre", color: "green" },
       { text: "EXIM Bank + DFC financiamiento", color: "gold" },
     ],
-    image: "/images/banco/trump-casablanca-oval.jpg",
-    imageAlt: "Milei con Trump en el Salón Oval — Acuerdo bilateral Argentina-EE.UU.",
+    image: "/images/banco/trump-casablanca-bilateral-delegaciones.jpg",
+    imageAlt: "Milei y Trump con delegaciones en la Casa Blanca — Acuerdo bilateral Argentina-EE.UU.",
     badge: "🇺🇸🇦🇷 Firmado Feb 2026",
   },
   {
@@ -451,8 +451,8 @@ export const forumAppearances: ForumAppearance[] = [
     highlight: true,
   },
   {
-    image: "/images/banco/miami-cumbre-trump-lideres.jpg",
-    imageAlt: "Milei con Trump y líderes conservadores en CPAC Washington",
+    image: "/images/banco/cpac-argentina-02.jpg",
+    imageAlt: "Milei en CPAC — la batalla cultural conservadora",
     title: "CPAC Washington",
     location: "Washington D.C.",
     date: "FEB 2024",
@@ -493,7 +493,7 @@ export const forumAppearances: ForumAppearance[] = [
   },
   {
     image: "/images/banco/meloni-casarosada-pose.jpg",
-    imageAlt: "Milei con Meloni en Casa Rosada",
+    imageAlt: "Milei con Meloni en Casa Rosada — alianza bilateral",
     title: "Meloni visita Buenos Aires",
     location: "Casa Rosada, Buenos Aires",
     date: "NOV 2024",
@@ -509,8 +509,8 @@ export const forumAppearances: ForumAppearance[] = [
     highlight: true,
   },
   {
-    image: "/images/banco/davos-2026-discurso.jpg",
-    imageAlt: "Milei en Davos 2026",
+    image: "/images/banco/davos-2026-board-of-peace.jpg",
+    imageAlt: "Milei y Trump firman el Board of Peace — Davos 2026",
     title: "Davos III + Board of Peace",
     location: "Davos, Suiza",
     date: "ENE 2026",

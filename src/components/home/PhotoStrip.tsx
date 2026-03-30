@@ -6,6 +6,7 @@ import Image from "next/image";
 interface Photo {
   src: string;
   alt: string;
+  pos?: string;
 }
 
 interface PhotoStripProps {
@@ -189,6 +190,7 @@ export function PhotoStrip({ photos, direction }: PhotoStripProps) {
             height={280}
             draggable={false}
             className="h-[clamp(8rem,6rem+8vw,14rem)] w-auto rounded-md object-cover"
+            style={p.pos ? { objectPosition: p.pos } : undefined}
             sizes="(max-width: 640px) 40vw, 300px"
           />
         ))}
