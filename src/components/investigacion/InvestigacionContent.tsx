@@ -386,9 +386,12 @@ export function InvestigacionContent() {
 
         <ScrollReveal variant="fade-up">
           <p className="prose-body">
-            {"El primer resultado clave es una fórmula cerrada para la escala mínima viable — el tamaño más chico que una economía puede tener y aún así sostener un equilibrio de crecimiento. Por debajo de ese umbral, "}
+            {"Pensalo como una pista de despegue. Un avión necesita una longitud mínima de pista para levantar vuelo — no importa qué tan bueno sea el motor, si la pista es más corta que el umbral, el avión no despega. Punto. No es que despegue un poco menos o más lento: simplemente no despega."}
+          </p>
+          <p className="prose-body">
+            {"Una economía con rendimientos crecientes funciona igual. Hay un tamaño mínimo por debajo del cual no puede sostenerse — no es que sea pobre, es que la matemática dice que "}
             <strong>{"ningún equilibrio viable puede existir"}</strong>
-            {". Es una zona muerta."}
+            {". El primer resultado clave del paper es una fórmula cerrada para ese umbral."}
           </p>
         </ScrollReveal>
 
@@ -602,18 +605,25 @@ export function InvestigacionContent() {
 
       {/* ── VI. Implicancias ─────────────────────────────────── */}
       <SectionArticle id="implicancias" last>
-        <ChapterHeader numeral="VI" title="Implicancias" />
+        <ChapterHeader numeral="VI" title="Por qué esto cambia todo" />
 
         <ScrollReveal variant="fade-up">
-          <div className="space-y-6">
+          <p className="prose-body">
+            {"Este paper no es un ejercicio teórico. Es la base matemática de una transformación real."}
+          </p>
+        </ScrollReveal>
+
+        <ScrollReveal variant="fade-up" delay={100}>
+          <div className="my-8 grid gap-4 sm:grid-cols-2">
             {[
-              { title: "La pobreza no siempre es gradual", text: "Hay un acantilado. Un poco más de regulación puede empujar la economía a un equilibrio con 7 veces menos producto. La diferencia entre prosperidad y estancamiento es un salto, no una pendiente." },
-              { title: "Las reformas a veces fallan por una razón matemática", text: "Reducir la cuña regulatoria es necesario pero no suficiente: también se necesita capital en la región de activación. Es un problema bidimensional." },
-              { title: "Los rendimientos crecientes moderados son los más peligrosos", text: "Con θ = 1.25, el amplificador es 4×. Cuanto más suaves los rendimientos crecientes, más grande el amplificador y más invisible el peligro." },
-              { title: "La acumulación de fricciones pequeñas puede ser catastrófica", text: "Cada regulación individual parece inofensiva. Pero todas se amplifican por el exponente. Lo que destruye economías no es la gran confiscación — es la muerte por mil cortes." },
+              { num: "01", title: "La pobreza no siempre es gradual", text: "El modelo convencional dice que más regulación te hace un poco más pobre. Este paper demuestra que hay un acantilado: un poco más de regulación puede empujar la economía a un equilibrio con 7 veces menos producto. La diferencia entre prosperidad y estancamiento es un salto abrupto, no una pendiente suave." },
+              { num: "02", title: "Las reformas a veces fallan por una razón matemática", text: "Países que reformaron y no crecieron no necesariamente hicieron algo mal. La recuperación es bidimensional: se necesita simultáneamente cuña baja y capital suficiente. Hacer una sola cosa no alcanza — y ningún análisis unidimensional puede capturarlo." },
+              { num: "03", title: "Los rendimientos crecientes moderados son los más peligrosos", text: "No hace falta que una economía tenga rendimientos a escala extremos. Con θ = 1.25 — apenas por encima de constantes — el amplificador ya es 4×. Cuanto más suaves los rendimientos crecientes, más grande el amplificador y más invisible el peligro." },
+              { num: "04", title: "La muerte por mil cortes", text: "Cada regulación individual parece inofensiva. Pero todas entran al denominador y se amplifican por el exponente. Lo que destruye economías no es la gran confiscación — es la acumulación silenciosa de fricciones pequeñas que, amplificadas, empujan la escala mínima por encima de lo que el país puede sostener." },
             ].map((item) => (
-              <ScrollReveal key={item.title} variant="fade-up">
+              <ScrollReveal key={item.num} variant="fade-up">
                 <div className="rounded-xl border border-border bg-surface-1 p-5 sm:p-6">
+                  <span className="mb-2 block font-accent text-xs font-bold text-gold">{item.num}</span>
                   <h4 className="m-0 mb-2 font-display text-base text-text-primary">{item.title}</h4>
                   <p className="card-body m-0">{item.text}</p>
                 </div>
@@ -622,8 +632,53 @@ export function InvestigacionContent() {
           </div>
         </ScrollReveal>
 
+        <ScrollReveal variant="fade-up">
+          <div className="my-10 rounded-xl border-2 border-gold/30 bg-gold/[0.04] p-6 sm:p-8">
+            <h4 className="m-0 mb-4 font-display text-lg text-text-primary">{"Argentina: la teoría hecha política"}</h4>
+            <p className="m-0 text-sm leading-relaxed text-text-secondary">
+              {"Argentina en 2023 era un caso de libro de este modelo: más de 67.000 regulaciones vigentes, una presión impositiva asfixiante y décadas de acumulación de cuñas que habían empujado la economía por debajo del acantilado. En dos años, el gobierno de Milei eliminó más de 14.500 regulaciones, bajó impuestos por 2,5 puntos del PBI y generó las condiciones para que el capital volviera a fluir. No fue un programa gradualist — fue una operación de rescate diseñada para satisfacer las dos condiciones del modelo simultáneamente: reducir la cuña "}
+              <strong>y</strong>
+              {" reconstruir el capital. El PBI alcanzó un máximo histórico en 2025. La escala mínima bajó; la economía cruzó de vuelta al otro lado del pliegue."}
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <Pullquote cite="Milei & Reidel (2026)">
+          {"En 1895, Argentina tenía el mayor PBI per cápita del mundo. Cien años de colectivismo destruyeron lo que 35 años de libertad construyeron. Este paper demuestra por qué: la acumulación de cuñas regulatorias no empobrece gradualmente — empuja a la economía por debajo del pliegue, y una vez ahí, el daño persiste aun después de revertir las políticas."}
+        </Pullquote>
+
+        {/* Paper 2 teaser */}
+        <ScrollReveal variant="fade-up">
+          <div className="mt-10 rounded-xl border border-border bg-surface-1 p-5 sm:p-6">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gold/10">
+                <span className="font-display text-lg text-gold">II</span>
+              </div>
+              <div>
+                <span className="badge-text">Próximamente</span>
+                <h4 className="m-0 mb-1 font-display text-base text-text-primary">
+                  {"When Regulation Kills Growth"}
+                </h4>
+                <p className="m-0 mb-1 text-sm italic text-text-tertiary">
+                  {"A Theoretical and Practical Framework Against Scale-Fragmenting Regulation"}
+                </p>
+                <p className="card-body m-0 mb-3">
+                  {"El segundo paper toma la teoría de la escala mínima y la convierte en un framework de política operacional: el Scale Impact Assessment — un protocolo que cualquier tribunal o regulador puede usar para evaluar si un remedio estructural es seguro antes de fragmentar un sector. Incluye una demostración completa sobre el caso Google Search 2025."}
+                </p>
+                <a href="/papers/when-regulation-kills-growth.pdf" download
+                  className="inline-flex items-center gap-2 rounded-lg bg-gold/10 px-4 py-2 font-accent text-xs font-semibold uppercase tracking-wide text-gold transition-colors duration-fast hover:bg-gold/20">
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  Descargar PDF
+                </a>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+
         <InsightCallout icon="📄">
-          {"Este paper es el primero de dos. El segundo — \"When Regulation Kills Growth\" — toma la teoría aquí presentada y la convierte en un framework de política aplicable: el Scale Impact Assessment. Ambos fueron presentados en el Foro Económico Mundial de Davos, enero 2026."}
+          {"Ambos papers fueron presentados en el Foro Económico Mundial de Davos, enero 2026. Juntos, formalizan matemáticamente la intuición de que la intervención estatal puede manufacturar exactamente el estancamiento que dice prevenir — y ofrecen las herramientas para impedirlo."}
         </InsightCallout>
       </SectionArticle>
     </SidebarLayout>
