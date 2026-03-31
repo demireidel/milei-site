@@ -16,8 +16,8 @@ export default function InvestigacionPage() {
       <BreadcrumbSchema name="Investigación" path="/investigacion" />
       <PageHeader
         eyebrow="INVESTIGACIÓN"
-        title="Minimum Viable Scale"
-        subtitle="¿Por qué algunas economías se quedan atrapadas en la pobreza mientras otras, con los mismos recursos, prosperan? ¿Por qué las reformas a veces no funcionan? Este paper demuestra que la respuesta está en la geometría de los rendimientos crecientes a escala."
+        title="Papers Milei-Reidel"
+        subtitle="Dos papers que formalizan matemáticamente por qué la intervención estatal puede manufacturar exactamente el estancamiento que dice prevenir — y construyen el instrumento para impedirlo. Presentados en el Foro Económico Mundial de Davos, enero 2026."
       />
       <InvestigacionContent />
     </>

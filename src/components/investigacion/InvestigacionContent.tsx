@@ -274,12 +274,17 @@ function HysteresisMap() {
 
 /* ── Sidebar ─────────────────────────────────────────────── */
 const sidebarItems = [
-  { id: "resumen", num: "I", title: "El paper" },
+  { id: "resumen", num: "I", title: "Paper 1" },
   { id: "escala", num: "II", title: "La escala mínima" },
   { id: "dos-mundos", num: "III", title: "Dos mundos" },
   { id: "amplificador", num: "IV", title: "El amplificador" },
   { id: "histeresis", num: "V", title: "Histéresis" },
   { id: "implicancias", num: "VI", title: "Implicancias" },
+  { id: "paper2", num: "VII", title: "Paper 2" },
+  { id: "canales", num: "VIII", title: "Los cuatro canales" },
+  { id: "sia", num: "IX", title: "El SIA" },
+  { id: "google", num: "X", title: "Caso Google" },
+  { id: "regla", num: "XI", title: "La regla" },
 ];
 
 /* ═══════════════════════════════════════════════════════════
@@ -603,26 +608,20 @@ export function InvestigacionContent() {
         </Pullquote>
       </SectionArticle>
 
-      {/* ── VI. Implicancias ─────────────────────────────────── */}
-      <SectionArticle id="implicancias" last>
+      {/* ── VI. Implicancias Paper 1 ────────────────────────── */}
+      <SectionArticle id="implicancias">
         <ChapterHeader numeral="VI" title="Por qué esto cambia todo" />
 
         <ScrollReveal variant="fade-up">
-          <p className="prose-body">
-            {"Este paper no es un ejercicio teórico. Es la base matemática de una transformación real."}
-          </p>
-        </ScrollReveal>
-
-        <ScrollReveal variant="fade-up" delay={100}>
           <div className="my-8 grid gap-4 sm:grid-cols-2">
             {[
-              { num: "01", title: "La pobreza no siempre es gradual", text: "El modelo convencional dice que más regulación te hace un poco más pobre. Este paper demuestra que hay un acantilado: un poco más de regulación puede empujar la economía a un equilibrio con 7 veces menos producto. La diferencia entre prosperidad y estancamiento es un salto abrupto, no una pendiente suave." },
-              { num: "02", title: "Las reformas a veces fallan por una razón matemática", text: "Países que reformaron y no crecieron no necesariamente hicieron algo mal. La recuperación es bidimensional: se necesita simultáneamente cuña baja y capital suficiente. Hacer una sola cosa no alcanza — y ningún análisis unidimensional puede capturarlo." },
-              { num: "03", title: "Los rendimientos crecientes moderados son los más peligrosos", text: "No hace falta que una economía tenga rendimientos a escala extremos. Con θ = 1.25 — apenas por encima de constantes — el amplificador ya es 4×. Cuanto más suaves los rendimientos crecientes, más grande el amplificador y más invisible el peligro." },
-              { num: "04", title: "La muerte por mil cortes", text: "Cada regulación individual parece inofensiva. Pero todas entran al denominador y se amplifican por el exponente. Lo que destruye economías no es la gran confiscación — es la acumulación silenciosa de fricciones pequeñas que, amplificadas, empujan la escala mínima por encima de lo que el país puede sostener." },
+              { num: "01", title: "La pobreza no siempre es gradual", text: "Hay un acantilado. Un poco más de regulación puede empujar la economía a un equilibrio con 7 veces menos producto." },
+              { num: "02", title: "Las reformas a veces fallan por una razón matemática", text: "La recuperación es bidimensional: cuña baja y capital suficiente. Hacer una sola cosa no alcanza." },
+              { num: "03", title: "Los rendimientos moderados son los más peligrosos", text: "Con θ = 1.25, el amplificador ya es 4×. Cuanto más suaves, más invisible el peligro." },
+              { num: "04", title: "La muerte por mil cortes", text: "Cada regulación se amplifica por el exponente. Lo que destruye economías es la acumulación silenciosa de fricciones." },
             ].map((item) => (
               <ScrollReveal key={item.num} variant="fade-up">
-                <div className="rounded-xl border border-border bg-surface-1 p-5 sm:p-6">
+                <div className="rounded-xl border border-border bg-surface-1 p-5">
                   <span className="mb-2 block font-accent text-xs font-bold text-gold">{item.num}</span>
                   <h4 className="m-0 mb-2 font-display text-base text-text-primary">{item.title}</h4>
                   <p className="card-body m-0">{item.text}</p>
@@ -632,53 +631,338 @@ export function InvestigacionContent() {
           </div>
         </ScrollReveal>
 
+        <Pullquote cite="Milei & Reidel (2026a)">
+          {"La intervención estatal puede manufacturar exactamente el estancamiento que dice prevenir. La acumulación de cuñas regulatorias no empobrece gradualmente — empuja a la economía por debajo del pliegue, y una vez ahí, el daño persiste aun después de revertir las políticas."}
+        </Pullquote>
+      </SectionArticle>
+
+      {/* ═══════════════════════════════════════════════════════
+         PAPER 2 — When Regulation Kills Growth
+         ═══════════════════════════════════════════════════════ */}
+
+      {/* ── VII. Paper 2 ────────────────────────────────────── */}
+      <SectionArticle id="paper2">
+        <ChapterHeader numeral="VII" title="When Regulation Kills Growth" />
+        <SectionKicker color="celeste">{"Working Paper — Abril 2026"}</SectionKicker>
+
         <ScrollReveal variant="fade-up">
-          <div className="my-10 rounded-xl border-2 border-gold/30 bg-gold/[0.04] p-6 sm:p-8">
-            <h4 className="m-0 mb-4 font-display text-lg text-text-primary">{"Argentina: la teoría hecha política"}</h4>
-            <p className="m-0 text-sm leading-relaxed text-text-secondary">
-              {"Argentina en 2023 era un caso de libro de este modelo: más de 67.000 regulaciones vigentes, una presión impositiva asfixiante y décadas de acumulación de cuñas que habían empujado la economía por debajo del acantilado. En dos años, el gobierno de Milei eliminó más de 14.500 regulaciones, bajó impuestos por 2,5 puntos del PBI y generó las condiciones para que el capital volviera a fluir. No fue un programa gradualist — fue una operación de rescate diseñada para satisfacer las dos condiciones del modelo simultáneamente: reducir la cuña "}
-              <strong>y</strong>
-              {" reconstruir el capital. El PBI alcanzó un máximo histórico en 2025. La escala mínima bajó; la economía cruzó de vuelta al otro lado del pliegue."}
+          <Card accent className="overflow-hidden !border-l-3 !border-l-gold">
+            <div className="p-5">
+              <div className="mb-2 flex items-center gap-3">
+                <span className="badge-text !mb-0">2026</span>
+                <span className="rounded-full bg-celeste/10 px-2.5 py-0.5 text-xs font-semibold text-celeste">Working Paper</span>
+              </div>
+              <h4 className="m-0 mb-1 font-display text-base leading-snug text-text-primary">
+                {"When Regulation Kills Growth: A Theoretical and Practical Framework Against Scale-Fragmenting Regulation"}
+              </h4>
+              <p className="card-body mb-3">Javier Milei & Demian Reidel</p>
+              <a href="/papers/when-regulation-kills-growth.pdf" download
+                className="inline-flex items-center gap-2 rounded-lg bg-gold/10 px-4 py-2 font-accent text-xs font-semibold uppercase tracking-wide text-gold transition-colors duration-fast hover:bg-gold/20">
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Descargar PDF
+              </a>
+            </div>
+            <ExpandableSection label="Ver abstract" labelExpanded="Cerrar">
+              <p className="card-body m-0">
+                {"En sectores con rendimientos crecientes, el debate regulatorio salta demasiado rápido del poder de mercado a la intervención estructural. Ese salto es peligroso. Este paper desarrolla un Scale Impact Assessment (SIA) operacional — un protocolo que define la unidad productiva, mide el headroom desde el pliegue, mapea cada remedio en cuatro canales económicos y emite una decisión transparente. El caso Google Search 2025 ilustra el framework sobre un expediente real."}
+              </p>
+            </ExpandableSection>
+          </Card>
+        </ScrollReveal>
+
+        <ScrollReveal variant="fade-up" delay={200}>
+          <div className="mt-10">
+            <h3 className="m-0 mb-4 font-display text-xl text-text-primary">{"De la teoría al instrumento"}</h3>
+            <p className="prose-body">
+              {"El primer paper demuestra que la escala mínima existe. Este segundo paper pregunta: ¿qué pasa cuando un regulador, con la mejor de las intenciones, rompe una empresa en pedazos? La respuesta depende de los detalles — y este paper construye el instrumento para evaluarlos."}
+            </p>
+            <p className="prose-body">
+              {"El paper no dice que toda regulación sea mala. Dice algo más preciso: en sectores con rendimientos crecientes y complementariedades densas, la regulación que "}
+              <strong>fragmenta escala productiva</strong>
+              {" es presuntivamente peligrosa salvo que el regulador demuestre que es segura. ¿Por qué? Porque la fragmentación puede empujar la economía por debajo del pliegue del Paper 1 — y una vez ahí, la reversión puede no reconstruir el sistema."}
             </p>
           </div>
         </ScrollReveal>
 
-        <Pullquote cite="Milei & Reidel (2026)">
-          {"En 1895, Argentina tenía el mayor PBI per cápita del mundo. Cien años de colectivismo destruyeron lo que 35 años de libertad construyeron. Este paper demuestra por qué: la acumulación de cuñas regulatorias no empobrece gradualmente — empuja a la economía por debajo del pliegue, y una vez ahí, el daño persiste aun después de revertir las políticas."}
-        </Pullquote>
+        <ScrollReveal variant="fade-up" delay={300}>
+          <div className="my-8 rounded-xl border border-gold/20 bg-gold/[0.03] p-5">
+            <h4 className="m-0 mb-3 font-display text-base text-text-primary">{"¿Dónde aplica este framework?"}</h4>
+            <p className="m-0 text-sm text-text-secondary">
+              {"No en toda la economía — solo en sectores donde las respuestas a estas preguntas son afirmativas:"}
+            </p>
+            <div className="mt-4 space-y-2">
+              {[
+                "¿Los rendimientos a escala son plausiblemente crecientes en la unidad productiva relevante?",
+                "¿Las complementariedades son densas y operacionalmente integrales?",
+                "¿El remedio propuesto es genuinamente fragmentador de escala?",
+                "¿El daño probable es persistente, no meramente transicional?",
+                "¿La escala y el headroom pueden medirse conservadoramente?",
+              ].map((q) => (
+                <div key={q.slice(0, 20)} className="flex items-start gap-2 text-sm text-text-secondary">
+                  <span className="mt-0.5 shrink-0 text-gold">?</span>
+                  {q}
+                </div>
+              ))}
+            </div>
+            <p className="m-0 mt-4 text-xs text-text-tertiary">
+              {"Si la mayoría de las respuestas son negativas, el framework no debería tener peso. Si son afirmativas, la fragmentación debería pasar un filtro de seguridad antes de proceder."}
+            </p>
+          </div>
+        </ScrollReveal>
+      </SectionArticle>
 
-        {/* Paper 2 teaser */}
+      {/* ── VIII. Los cuatro canales ─────────────────────────── */}
+      <SectionArticle id="canales">
+        <ChapterHeader numeral="VIII" title="Los cuatro canales" />
+
         <ScrollReveal variant="fade-up">
-          <div className="mt-10 rounded-xl border border-border bg-surface-1 p-5 sm:p-6">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gold/10">
-                <span className="font-display text-lg text-gold">II</span>
-              </div>
-              <div>
-                <span className="badge-text">Próximamente</span>
-                <h4 className="m-0 mb-1 font-display text-base text-text-primary">
-                  {"When Regulation Kills Growth"}
-                </h4>
-                <p className="m-0 mb-1 text-sm italic text-text-tertiary">
-                  {"A Theoretical and Practical Framework Against Scale-Fragmenting Regulation"}
-                </p>
-                <p className="card-body m-0 mb-3">
-                  {"El segundo paper toma la teoría de la escala mínima y la convierte en un framework de política operacional: el Scale Impact Assessment — un protocolo que cualquier tribunal o regulador puede usar para evaluar si un remedio estructural es seguro antes de fragmentar un sector. Incluye una demostración completa sobre el caso Google Search 2025."}
-                </p>
-                <a href="/papers/when-regulation-kills-growth.pdf" download
-                  className="inline-flex items-center gap-2 rounded-lg bg-gold/10 px-4 py-2 font-accent text-xs font-semibold uppercase tracking-wide text-gold transition-colors duration-fast hover:bg-gold/20">
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                  Descargar PDF
-                </a>
+          <p className="prose-body">
+            {"Las etiquetas legales de un remedio pueden engañar. Un remedio \"de conducta\" puede destruir complementariedades si la conducta prohibida es parte integral del sistema productivo. Un remedio \"estructural\" puede preservar escala si no fragmenta la unidad funcional. El paper propone evaluar todo remedio a través de cuatro canales económicos:"}
+          </p>
+        </ScrollReveal>
+
+        <ScrollReveal variant="fade-up" delay={100}>
+          <div className="my-8 grid gap-4 sm:grid-cols-2">
+            <div className="rounded-xl border border-green-500/20 bg-green-500/[0.03] p-5">
+              <div className="mb-2 text-lg text-green-600"><Math tex="m_r" /></div>
+              <h4 className="m-0 mb-1 font-display text-sm text-text-primary">Markup relief</h4>
+              <p className="m-0 text-xs text-text-secondary">
+                {"¿Cuánto baja el markup? Los remedios de conducta tienden a reducir markups sin tocar la unidad productiva. Esto "}
+                <strong>baja</strong>
+                {" la escala mínima — es bueno."}
+              </p>
+            </div>
+            <div className="rounded-xl border border-red-500/20 bg-red-500/[0.03] p-5">
+              <div className="mb-2 text-lg text-red-600"><Math tex="c_r" /></div>
+              <h4 className="m-0 mb-1 font-display text-sm text-text-primary">Complementarity destruction</h4>
+              <p className="m-0 text-xs text-text-secondary">
+                {"¿Cuánta productividad conjunta se destruye? Interfaces, pipelines de datos, rutinas de coordinación rotas. Esto "}
+                <strong>sube</strong>
+                {" la escala mínima — es peligroso."}
+              </p>
+            </div>
+            <div className="rounded-xl border border-amber-500/20 bg-amber-500/[0.03] p-5">
+              <div className="mb-2 text-lg text-amber-600"><Math tex="u_r" /></div>
+              <h4 className="m-0 mb-1 font-display text-sm text-text-primary">Wedge pressure</h4>
+              <p className="m-0 text-xs text-text-secondary">
+                {"¿Cuánto sube el costo de cumplimiento? Compliance, fricciones de financiamiento, demoras. Todo se amplifica por "}
+                <Math tex="1/(\theta-1)" />
+                {"."}
+              </p>
+            </div>
+            <div className="rounded-xl border border-blue-500/20 bg-blue-500/[0.03] p-5">
+              <div className="mb-2 text-lg text-blue-600"><Math tex="\ell_r" /></div>
+              <h4 className="m-0 mb-1 font-display text-sm text-text-primary">Retained scale</h4>
+              <p className="m-0 text-xs text-text-secondary">
+                {"¿Cuánta escala operativa sobrevive? Medida a nivel del sistema, no del incumbente individual. Si rivales expanden, la escala sistémica puede preservarse."}
+              </p>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal variant="fade-up">
+          <p className="prose-body">
+            {"Los cuatro canales determinan conjuntamente si un remedio cruza el pliegue. La fórmula para el headroom post-remedio es:"}
+          </p>
+        </ScrollReveal>
+
+        <EquationBlock
+          label="Headroom post-remedio"
+          tex="h_r \;=\; h_0 + \ell_r - \frac{u_r - m_r + c_r}{\theta - 1}"
+        >
+          <p className="m-0 mt-4 text-center text-sm text-text-secondary">
+            {"Un remedio es admisible solo si "}
+            <Math tex="h_r \geq s" />
+            {" — si preserva al menos un margen de seguridad "}
+            <Math tex="s" />
+            {" desde el pliegue."}
+          </p>
+        </EquationBlock>
+
+        <ScrollReveal variant="fade-up">
+          <div className="my-8 overflow-hidden rounded-xl border border-border bg-surface-1 p-6">
+            <h4 className="mb-4 text-center font-display text-lg text-text-primary">Taxonomía de remedios</h4>
+            <div className="grid gap-4 sm:grid-cols-3">
+              {[
+                { type: "Conducta", examples: "Anti-conditioning, tying bans, contratos", effect: "↓ markup, unidad intacta", verdict: "Favorable", color: "border-green-500/30 bg-green-500/[0.04]", verdictColor: "text-green-700", icon: "✅" },
+                { type: "Acceso preservando escala", examples: "Interoperabilidad, portabilidad, datos abiertos", effect: "↓ markup indirecto, escala preservada", verdict: "Favorable con verificación", color: "border-amber-500/30 bg-amber-500/[0.04]", verdictColor: "text-amber-700", icon: "⚠️" },
+                { type: "Fragmentación estructural", examples: "Breakups, separación forzosa, límites de red", effect: "↓ complementariedades, ↓ escala", verdict: "Peligrosa salvo prueba fold-safe", color: "border-red-500/30 bg-red-500/[0.04]", verdictColor: "text-red-700", icon: "❌" },
+              ].map((r) => (
+                <div key={r.type} className={`rounded-xl border p-4 ${r.color}`}>
+                  <div className="mb-2 flex items-center gap-2">
+                    <span className="text-lg">{r.icon}</span>
+                    <h5 className="m-0 font-display text-sm text-text-primary">{r.type}</h5>
+                  </div>
+                  <p className="m-0 mb-2 text-xs text-text-secondary">{r.examples}</p>
+                  <p className="m-0 mb-2 text-xs text-text-tertiary">{r.effect}</p>
+                  <p className={`m-0 text-xs font-semibold ${r.verdictColor}`}>{r.verdict}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </ScrollReveal>
+
+        <InsightCallout>
+          {"El paper no es anti-remedio. Es anti-fragmentación sin prueba de seguridad. Algunos remedios mejoran la viabilidad — los que reducen markups sin romper la unidad productiva. El framework los aprueba."}
+        </InsightCallout>
+      </SectionArticle>
+
+      {/* ── IX. El Scale Impact Assessment ───────────────────── */}
+      <SectionArticle id="sia">
+        <ChapterHeader numeral="IX" title="El Scale Impact Assessment" />
+
+        <ScrollReveal variant="fade-up">
+          <p className="prose-body">
+            {"La contribución central del paper es operacional: un protocolo de evaluación que cualquier tribunal, agencia o litigante puede aplicar antes de fragmentar un sector. No reemplaza el análisis de bienestar — lo ordena. Fold safety es un filtro previo: los remedios que lo fallan salen del menú antes de que empiece el balanceo."}
+          </p>
+        </ScrollReveal>
+
+        <ScrollReveal variant="fade-up" delay={100}>
+          <div className="my-10 overflow-hidden rounded-xl border border-border bg-surface-1 p-6 sm:p-8">
+            <h4 className="mb-6 text-center font-display text-lg text-text-primary">Scale Impact Assessment — Workflow</h4>
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              {[
+                { step: "0", label: "Applicability\nscreen" },
+                { step: "1", label: "Definir unidad\nproductiva" },
+                { step: "2", label: "Medir headroom\nbaseline" },
+                { step: "3", label: "Mapear en\nm, c, u, ℓ" },
+                { step: "4", label: "Aplicar test\nfold-safety" },
+                { step: "5", label: "Rankear y\ndecidir" },
+              ].map((s, i) => (
+                <div key={s.step} className="flex items-center gap-2">
+                  <div className="flex h-16 w-24 flex-col items-center justify-center rounded-lg border border-border bg-surface-2 px-2 text-center sm:w-28">
+                    <span className="mb-0.5 font-mono text-[10px] font-bold text-gold">Paso {s.step}</span>
+                    <span className="whitespace-pre-line text-[10px] leading-tight text-text-secondary">{s.label}</span>
+                  </div>
+                  {i < 5 && <span className="text-text-tertiary">→</span>}
+                </div>
+              ))}
+            </div>
+            <div className="mt-4 flex justify-center">
+              <div className="rounded-lg border-2 border-gold/30 bg-gold/[0.04] px-6 py-3 text-center">
+                <span className="block text-xs font-semibold text-text-tertiary">Decisión</span>
+                <span className="font-display text-sm text-text-primary">Pass · Fail · Indeterminate · Dominated</span>
               </div>
             </div>
           </div>
         </ScrollReveal>
 
+        <ScrollReveal variant="fade-up">
+          <div className="my-6 grid gap-4 sm:grid-cols-2">
+            {[
+              { label: "Pass", desc: "El remedio despeja el test bajo supuestos conservadores. Puede proceder al balanceo de bienestar.", color: "text-green-700", bg: "bg-green-500/[0.04] border-green-500/20" },
+              { label: "Fail", desc: "Ni la parametrización más favorable despeja el margen de seguridad. El remedio sale del menú.", color: "text-red-700", bg: "bg-red-500/[0.04] border-red-500/20" },
+              { label: "Indeterminate", desc: "El resultado depende de inputs empíricos no resueltos. Se necesita más evidencia antes de decidir.", color: "text-amber-700", bg: "bg-amber-500/[0.04] border-amber-500/20" },
+              { label: "Dominated", desc: "Otro remedio en el mismo menú logra al menos tanto markup relief con menos fragmentación. Eliminado.", color: "text-text-primary", bg: "bg-surface-1 border-border" },
+            ].map((d) => (
+              <ScrollReveal key={d.label} variant="fade-up">
+                <div className={`rounded-xl border p-4 ${d.bg}`}>
+                  <h5 className={`m-0 mb-1 font-display text-sm ${d.color}`}>{d.label}</h5>
+                  <p className="card-body m-0 text-xs">{d.desc}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </ScrollReveal>
+      </SectionArticle>
+
+      {/* ── X. Caso Google ───────────────────────────────────── */}
+      <SectionArticle id="google">
+        <ChapterHeader numeral="X" title="Caso Google Search 2025" />
+
+        <ScrollReveal variant="fade-up">
+          <p className="prose-body">
+            {"El paper aplica el SIA al expediente real de remedios antimonopolio contra Google Search en 2025. No es un ejercicio teórico — es una demostración de cómo el framework clasifica un menú real de remedios sobre evidencia pública."}
+          </p>
+          <p className="prose-body">
+            {"La unidad productiva no es \"Google\" en abstracto. Es el sistema integrado query-distribución-datos-compute a través del cual la calidad de búsqueda, la colocación por defecto, el uso del navegador, los datos del usuario y la escala de infraestructura interactúan. Es el lugar donde las complementariedades se crean y donde la fragmentación puede destruirlas."}
+          </p>
+        </ScrollReveal>
+
+        <ScrollReveal variant="fade-up" delay={100}>
+          <div className="my-8 overflow-hidden rounded-xl border border-border bg-surface-1 p-6">
+            <h4 className="mb-4 text-center font-display text-lg text-text-primary">Clasificación SIA del menú de remedios</h4>
+            <div className="space-y-3">
+              {[
+                { remedy: "Anti-conditioning + límites de 1 año", output: "Pass", color: "text-green-700 bg-green-500/10", why: "Ataca contratos de distribución directamente. La unidad productiva queda intacta." },
+                { remedy: "Data disclosures", output: "Pass", color: "text-green-700 bg-green-500/10", why: "Abre acceso a datos y soporta escala rival. Requiere monitoreo de privacidad." },
+                { remedy: "Syndication package", output: "Pass", color: "text-green-700 bg-green-500/10", why: "Soporta escala rival sin fragmentación inmediata. Requiere taper enforcement." },
+                { remedy: "Choice screens", output: "Pass ilustrativo", color: "text-amber-700 bg-amber-500/10", why: "Fácil de reconciliar con fold safety, pero probablemente demasiado débil." },
+                { remedy: "Complete payment ban", output: "Indeterminate", color: "text-amber-700 bg-amber-500/10", why: "Markup relief potencialmente grande, pero escala retenida y respuesta de distribuidores sin resolver." },
+                { remedy: "Chrome divestiture", output: "Fail", color: "text-red-700 bg-red-500/10", why: "Fragmentación estructural de la interfaz browser-distribución-aprendizaje. La carga de prueba no se cumple." },
+              ].map((r) => (
+                <div key={r.remedy} className="flex flex-col gap-2 rounded-lg bg-surface-2 p-3 sm:flex-row sm:items-start sm:gap-4">
+                  <div className="shrink-0 sm:w-48">
+                    <span className="block text-xs font-semibold text-text-primary">{r.remedy}</span>
+                    <span className={`mt-1 inline-block rounded-full px-2 py-0.5 text-[10px] font-bold ${r.color}`}>{r.output}</span>
+                  </div>
+                  <p className="m-0 text-xs text-text-secondary">{r.why}</p>
+                </div>
+              ))}
+            </div>
+            <p className="m-0 mt-4 text-center text-xs text-text-tertiary">
+              {"El tribunal eligió el paquete de menor fragmentación. El SIA lo clasifica como la ruta más consistente con fold safety."}
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <InsightCallout icon="🔍">
+          {"La conclusión sobre Chrome es deliberadamente estrecha: no dice que Google debería quedar sin regular. Dice que, en el expediente disponible, la fragmentación estructural no fue demostrada fold-safe respecto de alternativas de menor fragmentación que estaban en el mismo menú."}
+        </InsightCallout>
+      </SectionArticle>
+
+      {/* ── XI. La regla de decisión ─────────────────────────── */}
+      <SectionArticle id="regla" last>
+        <ChapterHeader numeral="XI" title="La regla de decisión" subtitle="Policy rule under irreversibility" />
+
+        <ScrollReveal variant="fade-up">
+          <p className="prose-body">
+            {"El test robusto usa cotas conservadoras para cada variable: lower bounds para markup relief y escala retenida, upper bounds para destrucción de complementariedades y presión de cuña:"}
+          </p>
+        </ScrollReveal>
+
+        <EquationBlock
+          label="Versión robusta del test de fold safety"
+          tex="\underline{h}_r \;\equiv\; \underline{h}_0 + \underline{\ell}_r - \frac{\bar{u}_r - \underline{m}_r + \bar{c}_r}{\underline{\theta} - 1} \;\geq\; s"
+        >
+          <p className="m-0 mt-4 text-center text-sm text-text-secondary">
+            {"Si incluso la parametrización más favorable no despeja el margen de seguridad, el remedio falla."}
+          </p>
+        </EquationBlock>
+
+        <ScrollReveal variant="fade-up">
+          <div className="my-8 overflow-hidden rounded-xl border border-border bg-surface-1 p-6">
+            <h4 className="mb-4 font-display text-lg text-text-primary">Regla de decisión bajo irreversibilidad</h4>
+            <div className="space-y-4">
+              {[
+                { step: "i", text: "Definir la unidad productiva y aplicar el Scale Impact Assessment.", icon: "🔍" },
+                { step: "ii", text: "Eliminar del menú todo remedio que falle el test o que esté dominado por una alternativa de menor fragmentación.", icon: "❌" },
+                { step: "iii", text: "Solo entonces — con los remedios admisibles — proceder al balanceo de bienestar convencional.", icon: "⚖️" },
+              ].map((s) => (
+                <div key={s.step} className="flex items-start gap-3">
+                  <span className="mt-0.5 text-xl">{s.icon}</span>
+                  <div>
+                    <span className="font-mono text-xs font-bold text-gold">({s.step})</span>
+                    <p className="m-0 text-sm text-text-secondary">{s.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="m-0 mt-6 text-sm text-text-secondary">
+              <strong>{"¿Por qué importa el orden?"}</strong>
+              {" Porque la fragmentación es irreversible. Si un regulador decide no fragmentar hoy, retiene la opción de hacerlo mañana con más evidencia. Si fragmenta y destruye las complementariedades, los equipos, las rutinas y los pipelines de datos, la reversión puede no reconstruir el sistema."}
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <Pullquote cite="Milei & Reidel (2026b)">
+          {"En sectores con rendimientos crecientes, complementariedades densas e irreversibilidad significativa, la regulación que fragmenta escala productiva no puede tratarse como presuntivamente inofensiva. Antes de fragmentar, hay que demostrar — ex ante, bajo supuestos conservadores y con margen de seguridad — que el remedio es fold-safe."}
+        </Pullquote>
+
         <InsightCallout icon="📄">
-          {"Ambos papers fueron presentados en el Foro Económico Mundial de Davos, enero 2026. Juntos, formalizan matemáticamente la intuición de que la intervención estatal puede manufacturar exactamente el estancamiento que dice prevenir — y ofrecen las herramientas para impedirlo."}
+          {"Ambos papers fueron presentados en el Foro Económico Mundial de Davos, enero 2026. El primero construye la teoría — la escala mínima viable, el amplificador, la histéresis. El segundo la convierte en un instrumento operacional — el Scale Impact Assessment — y lo demuestra sobre un expediente real. Juntos, formalizan matemáticamente la intuición de que la intervención estatal puede manufacturar exactamente el estancamiento que dice prevenir."}
         </InsightCallout>
       </SectionArticle>
     </SidebarLayout>
