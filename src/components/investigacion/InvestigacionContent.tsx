@@ -132,8 +132,8 @@ function FoldDiagram() {
 function AmplifierBars() {
   const { ref, inView } = useInView(0.25);
   const data = [
-    { shock: "+10\\%", result: "+46\\%", pct: 46, label: "+46%" },
-    { shock: "+25\\%", result: "+144\\%", pct: 100, label: "+144%" },
+    { shock: "+10\\%", result: "+46\\%", pct: 16, label: "+46%" },
+    { shock: "+25\\%", result: "+144\\%", pct: 51, label: "+144%" },
     { shock: "+40\\%", result: "+284\\%", pct: 100, label: "+284%" },
   ];
 
@@ -274,17 +274,15 @@ function HysteresisMap() {
 
 /* ── Sidebar ─────────────────────────────────────────────── */
 const sidebarItems = [
-  { id: "resumen", num: "I", title: "Paper 1" },
+  { id: "resumen", num: "I", title: "Los papers" },
   { id: "escala", num: "II", title: "La escala mínima" },
   { id: "dos-mundos", num: "III", title: "Dos mundos" },
   { id: "amplificador", num: "IV", title: "El amplificador" },
   { id: "histeresis", num: "V", title: "Histéresis" },
-  { id: "implicancias", num: "VI", title: "Implicancias" },
-  { id: "paper2", num: "VII", title: "Paper 2" },
-  { id: "canales", num: "VIII", title: "Los cuatro canales" },
-  { id: "sia", num: "IX", title: "El SIA" },
-  { id: "google", num: "X", title: "Caso Google" },
-  { id: "regla", num: "XI", title: "La regla" },
+  { id: "paper2", num: "VI", title: "La regulación" },
+  { id: "canales", num: "VII", title: "Los cuatro canales" },
+  { id: "google", num: "VIII", title: "Caso Google" },
+  { id: "regla", num: "IX", title: "La regla" },
 ];
 
 /* ═══════════════════════════════════════════════════════════
@@ -294,59 +292,46 @@ export function InvestigacionContent() {
   return (
     <SidebarLayout label="Secciones" items={sidebarItems} variant="navy">
 
-      {/* ── I. El paper ─────────────────────────────────────── */}
+      {/* ── I. Los papers ────────────────────────────────────── */}
       <SectionArticle id="resumen">
-        <ChapterHeader numeral="I" title="El paper" />
-        <SectionKicker color="celeste">{"Working Paper — Abril 2026"}</SectionKicker>
+        <ChapterHeader numeral="I" title="Los papers" />
+        <SectionKicker color="celeste">{"Davos, enero 2026"}</SectionKicker>
 
         <ScrollReveal variant="fade-up">
-          <Card accent className="overflow-hidden !border-l-3 !border-l-gold">
-            <div className="p-5">
-              <div className="mb-2 flex items-center gap-3">
-                <span className="badge-text !mb-0">2026</span>
-                <span className="rounded-full bg-celeste/10 px-2.5 py-0.5 text-xs font-semibold text-celeste">Working Paper</span>
+          <div className="mb-6 grid gap-4 sm:grid-cols-2">
+            {/* Paper 1 card */}
+            <Card accent className="overflow-hidden !border-l-3 !border-l-gold">
+              <div className="p-5">
+                <div className="mb-2 flex items-center gap-3">
+                  <span className="badge-text !mb-0">Paper 1</span>
+                </div>
+                <h4 className="m-0 mb-1 font-display text-sm leading-snug text-text-primary">
+                  {"Minimum Viable Scale and Local Activation with Increasing Returns to Scale and Endogenous Labor Supply"}
+                </h4>
+                <p className="card-body mb-3">Milei & Reidel · 2026</p>
+                <a href="/papers/minimum-viable-scale.pdf" download
+                  className="inline-flex items-center gap-2 rounded-lg bg-gold/10 px-3 py-1.5 font-accent text-[10px] font-semibold uppercase tracking-wide text-gold transition-colors duration-fast hover:bg-gold/20">
+                  PDF
+                </a>
               </div>
-              <h4 className="m-0 mb-1 font-display text-base leading-snug text-text-primary">
-                {"Minimum Viable Scale and Local Activation with Increasing Returns to Scale and Endogenous Labor Supply"}
-              </h4>
-              <p className="card-body mb-3">Javier Milei & Demian Reidel</p>
-              <a href="/papers/minimum-viable-scale.pdf" download
-                className="inline-flex items-center gap-2 rounded-lg bg-gold/10 px-4 py-2 font-accent text-xs font-semibold uppercase tracking-wide text-gold transition-colors duration-fast hover:bg-gold/20">
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                Descargar PDF
-              </a>
-            </div>
-            <ExpandableSection label="Ver abstract" labelExpanded="Cerrar">
-              <p className="card-body m-0 mb-3">
-                {"Modelo Ramsey con oferta laboral endógena y tecnología CES homogénea de grado "}
-                <Math tex="\theta" />
-                {". En el régimen de pliegue ("}
-                <Math tex="\theta > 1" />
-                {" y "}
-                <Math tex="\sigma < 1" />
-                {"), la condición de Euler estacionaria colapsa el sistema a una función escalar diagnóstica "}
-                <Math tex="G(r;D)" />
-                {". La productividad marginal reducida del capital tiene forma de joroba, generando una escala mínima viable en forma cerrada. Por debajo de ese umbral no existe estado estacionario interior."}
-              </p>
-              <h5 className="m-0 mb-2 font-accent text-xs uppercase tracking-wide text-text-primary">Resultados clave</h5>
-              <ul className="m-0 list-none space-y-2 p-0">
-                {[
-                  "Diagnóstico escalar: el sistema 3D colapsa a encontrar ceros de G(r;D)",
-                  "Escala mínima viable en forma cerrada — primera fórmula explícita para un modelo Ramsey-CES con trabajo endógeno",
-                  "Dos equilibrios coexistentes separados por un factor 7× en producto, 6× en capital, 9× en consumo",
-                  "Amplificador de cuña: elasticidad 1/(θ−1), con θ = 1.25 el amplificador es 4×",
-                  "Histéresis bidimensional: la recuperación requiere D < D_SN y capital en la región de activación simultáneamente",
-                ].map((r) => (
-                  <li key={r.slice(0, 25)} className="flex items-start gap-2 text-xs text-text-secondary">
-                    <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
-                    {r}
-                  </li>
-                ))}
-              </ul>
-            </ExpandableSection>
-          </Card>
+            </Card>
+            {/* Paper 2 card */}
+            <Card accent className="overflow-hidden !border-l-3 !border-l-gold">
+              <div className="p-5">
+                <div className="mb-2 flex items-center gap-3">
+                  <span className="badge-text !mb-0">Paper 2</span>
+                </div>
+                <h4 className="m-0 mb-1 font-display text-sm leading-snug text-text-primary">
+                  {"When Regulation Kills Growth: A Theoretical and Practical Framework Against Scale-Fragmenting Regulation"}
+                </h4>
+                <p className="card-body mb-3">Milei & Reidel · 2026</p>
+                <a href="/papers/when-regulation-kills-growth.pdf" download
+                  className="inline-flex items-center gap-2 rounded-lg bg-gold/10 px-3 py-1.5 font-accent text-[10px] font-semibold uppercase tracking-wide text-gold transition-colors duration-fast hover:bg-gold/20">
+                  PDF
+                </a>
+              </div>
+            </Card>
+          </div>
         </ScrollReveal>
 
         <ScrollReveal variant="fade-up" delay={200}>
@@ -603,36 +588,8 @@ export function InvestigacionContent() {
           </p>
         </ScrollReveal>
 
-        <Pullquote cite="Milei & Reidel (2026)">
-          {"La intervención estatal puede manufacturar exactamente el estancamiento que dice prevenir. Un impuesto que parece menor empuja la escala mínima hacia arriba; una vez que la economía cae por debajo del pliegue, el daño persiste aun después de revertir la política."}
-        </Pullquote>
-      </SectionArticle>
-
-      {/* ── VI. Implicancias Paper 1 ────────────────────────── */}
-      <SectionArticle id="implicancias">
-        <ChapterHeader numeral="VI" title="Por qué esto cambia todo" />
-
-        <ScrollReveal variant="fade-up">
-          <div className="my-8 grid gap-4 sm:grid-cols-2">
-            {[
-              { num: "01", title: "La pobreza no siempre es gradual", text: "Hay un acantilado. Un poco más de regulación puede empujar la economía a un equilibrio con 7 veces menos producto." },
-              { num: "02", title: "Las reformas a veces fallan por una razón matemática", text: "La recuperación es bidimensional: cuña baja y capital suficiente. Hacer una sola cosa no alcanza." },
-              { num: "03", title: "Los rendimientos moderados son los más peligrosos", text: "Con θ = 1.25, el amplificador ya es 4×. Cuanto más suaves, más invisible el peligro." },
-              { num: "04", title: "La muerte por mil cortes", text: "Cada regulación se amplifica por el exponente. Lo que destruye economías es la acumulación silenciosa de fricciones." },
-            ].map((item) => (
-              <ScrollReveal key={item.num} variant="fade-up">
-                <div className="rounded-xl border border-border bg-surface-1 p-5">
-                  <span className="mb-2 block font-accent text-xs font-bold text-gold">{item.num}</span>
-                  <h4 className="m-0 mb-2 font-display text-base text-text-primary">{item.title}</h4>
-                  <p className="card-body m-0">{item.text}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </ScrollReveal>
-
         <Pullquote cite="Milei & Reidel (2026a)">
-          {"La intervención estatal puede manufacturar exactamente el estancamiento que dice prevenir. La acumulación de cuñas regulatorias no empobrece gradualmente — empuja a la economía por debajo del pliegue, y una vez ahí, el daño persiste aun después de revertir las políticas."}
+          {"La intervención estatal puede manufacturar exactamente el estancamiento que dice prevenir. Un impuesto que parece menor empuja la escala mínima hacia arriba; una vez que la economía cae por debajo del pliegue, el daño persiste aun después de revertir la política."}
         </Pullquote>
       </SectionArticle>
 
@@ -640,9 +597,9 @@ export function InvestigacionContent() {
          PAPER 2 — When Regulation Kills Growth
          ═══════════════════════════════════════════════════════ */}
 
-      {/* ── VII. Paper 2 ────────────────────────────────────── */}
+      {/* ── VI. Paper 2 ─────────────────────────────────────── */}
       <SectionArticle id="paper2">
-        <ChapterHeader numeral="VII" title="When Regulation Kills Growth" />
+        <ChapterHeader numeral="VI" title="When Regulation Kills Growth" />
         <SectionKicker color="celeste">{"Working Paper — Abril 2026"}</SectionKicker>
 
         <ScrollReveal variant="fade-up">
@@ -713,9 +670,9 @@ export function InvestigacionContent() {
         </ScrollReveal>
       </SectionArticle>
 
-      {/* ── VIII. Los cuatro canales ─────────────────────────── */}
+      {/* ── VII. Los cuatro canales ─────────────────────────── */}
       <SectionArticle id="canales">
-        <ChapterHeader numeral="VIII" title="Los cuatro canales" />
+        <ChapterHeader numeral="VII" title="Los cuatro canales" />
 
         <ScrollReveal variant="fade-up">
           <p className="prose-body">
@@ -804,22 +761,7 @@ export function InvestigacionContent() {
           </div>
         </ScrollReveal>
 
-        <InsightCallout>
-          {"El paper no es anti-remedio. Es anti-fragmentación sin prueba de seguridad. Algunos remedios mejoran la viabilidad — los que reducen markups sin romper la unidad productiva. El framework los aprueba."}
-        </InsightCallout>
-      </SectionArticle>
-
-      {/* ── IX. El Scale Impact Assessment ───────────────────── */}
-      <SectionArticle id="sia">
-        <ChapterHeader numeral="IX" title="El Scale Impact Assessment" />
-
         <ScrollReveal variant="fade-up">
-          <p className="prose-body">
-            {"La contribución central del paper es operacional: un protocolo de evaluación que cualquier tribunal, agencia o litigante puede aplicar antes de fragmentar un sector. No reemplaza el análisis de bienestar — lo ordena. Fold safety es un filtro previo: los remedios que lo fallan salen del menú antes de que empiece el balanceo."}
-          </p>
-        </ScrollReveal>
-
-        <ScrollReveal variant="fade-up" delay={100}>
           <div className="my-10 overflow-hidden rounded-xl border border-border bg-surface-1 p-6 sm:p-8">
             <h4 className="mb-6 text-center font-display text-lg text-text-primary">Scale Impact Assessment — Workflow</h4>
             <div className="flex flex-wrap items-center justify-center gap-2">
@@ -849,28 +791,14 @@ export function InvestigacionContent() {
           </div>
         </ScrollReveal>
 
-        <ScrollReveal variant="fade-up">
-          <div className="my-6 grid gap-4 sm:grid-cols-2">
-            {[
-              { label: "Pass", desc: "El remedio despeja el test bajo supuestos conservadores. Puede proceder al balanceo de bienestar.", color: "text-green-700", bg: "bg-green-500/[0.04] border-green-500/20" },
-              { label: "Fail", desc: "Ni la parametrización más favorable despeja el margen de seguridad. El remedio sale del menú.", color: "text-red-700", bg: "bg-red-500/[0.04] border-red-500/20" },
-              { label: "Indeterminate", desc: "El resultado depende de inputs empíricos no resueltos. Se necesita más evidencia antes de decidir.", color: "text-amber-700", bg: "bg-amber-500/[0.04] border-amber-500/20" },
-              { label: "Dominated", desc: "Otro remedio en el mismo menú logra al menos tanto markup relief con menos fragmentación. Eliminado.", color: "text-text-primary", bg: "bg-surface-1 border-border" },
-            ].map((d) => (
-              <ScrollReveal key={d.label} variant="fade-up">
-                <div className={`rounded-xl border p-4 ${d.bg}`}>
-                  <h5 className={`m-0 mb-1 font-display text-sm ${d.color}`}>{d.label}</h5>
-                  <p className="card-body m-0 text-xs">{d.desc}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </ScrollReveal>
+        <InsightCallout>
+          {"El paper no es anti-remedio. Es anti-fragmentación sin prueba de seguridad. Algunos remedios mejoran la viabilidad — los que reducen markups sin romper la unidad productiva. El framework los aprueba."}
+        </InsightCallout>
       </SectionArticle>
 
-      {/* ── X. Caso Google ───────────────────────────────────── */}
+      {/* ── VIII. Caso Google ────────────────────────────────── */}
       <SectionArticle id="google">
-        <ChapterHeader numeral="X" title="Caso Google Search 2025" />
+        <ChapterHeader numeral="VIII" title="Caso Google Search 2025" />
 
         <ScrollReveal variant="fade-up">
           <p className="prose-body">
@@ -913,9 +841,9 @@ export function InvestigacionContent() {
         </InsightCallout>
       </SectionArticle>
 
-      {/* ── XI. La regla de decisión ─────────────────────────── */}
+      {/* ── IX. La regla de decisión ──────────────────────────── */}
       <SectionArticle id="regla" last>
-        <ChapterHeader numeral="XI" title="La regla de decisión" subtitle="Policy rule under irreversibility" />
+        <ChapterHeader numeral="IX" title="La regla de decisión" subtitle="Policy rule under irreversibility" />
 
         <ScrollReveal variant="fade-up">
           <p className="prose-body">
