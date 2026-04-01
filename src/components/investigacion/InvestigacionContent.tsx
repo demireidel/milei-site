@@ -341,7 +341,7 @@ export function InvestigacionContent() {
               {"Abran cualquier libro de microeconomía y van a encontrar el mismo supuesto en la primera página: rendimientos decrecientes a escala. Producir el doble cuesta más que el doble. ¿Por qué todos los modelos asumen esto? No porque sea verdad — sino porque cuando los rendimientos son crecientes, los modelos estándar dejan de funcionar. La función objetivo deja de ser cóncava, los teoremas de existencia y unicidad no aplican, y las herramientas convencionales no sirven."}
             </p>
             <p className="prose-body">
-              {"El resultado es que la teoría económica asumió durante décadas algo que sabe que es falso. En el mundo real — redes, tecnología, software, infraestructura, data centers — la escala genera más escala. Los economistas lo sabían, pero no tenían las herramientas para modelarlo."}
+              {"El resultado es que la teoría económica asumió durante décadas algo que sabe que es falso. En el mundo real — redes, tecnología, software, infraestructura, data centers — la escala genera más escala. Cuando Google procesa una búsqueda más, el costo marginal es esencialmente cero pero el sistema se vuelve más inteligente. Cuando un data center duplica su capacidad, la eficiencia energética mejora. Cuando una red social suma un usuario, el valor para todos los demás sube. Los economistas lo sabían desde Marshall (1890), pero no tenían las herramientas para modelarlo rigurosamente."}
             </p>
           </div>
         </ScrollReveal>
@@ -351,13 +351,13 @@ export function InvestigacionContent() {
             <div className="rounded-xl border border-red-500/20 bg-red-500/[0.03] p-5">
               <span className="badge-text !text-red-600">Lo que asumen los libros de texto</span>
               <p className="m-0 mt-3 text-sm text-text-secondary">
-                {"Rendimientos decrecientes → un solo equilibrio → la economía siempre converge → más regulación te hace un poco más pobre. Todo es gradual."}
+                {"Rendimientos decrecientes → la productividad marginal siempre baja → existe un solo equilibrio estable → la economía siempre converge → más regulación te hace un poco más pobre, menos regulación un poco más rico. La relación es gradual, continua, predecible. No hay acantilados, no hay trampas, no hay sorpresas."}
               </p>
             </div>
             <div className="rounded-xl border border-green-500/20 bg-green-500/[0.03] p-5">
               <span className="badge-text !text-green-700">Lo que demuestra este paper</span>
               <p className="m-0 mt-3 text-sm text-text-secondary">
-                {"Rendimientos crecientes → múltiples equilibrios → acantilado invisible → un poco más de regulación puede empujarte al vacío. La diferencia es abrupta."}
+                {"Rendimientos crecientes + complementaridad capital-trabajo → la productividad marginal tiene forma de joroba → pueden coexistir múltiples equilibrios → aparece un acantilado invisible → un poco más de regulación puede empujarte al vacío, y una vez ahí, revertir la política no alcanza para salir. La diferencia entre prosperidad y estancamiento es abrupta."}
               </p>
             </div>
           </div>
@@ -365,7 +365,11 @@ export function InvestigacionContent() {
 
         <ScrollReveal variant="fade-up" delay={400}>
           <InsightCallout icon="🔑">
-            {"Este paper resuelve el problema: desarrolla el modelo completo con rendimientos crecientes a escala, oferta laboral endógena y complementaridad capital-trabajo. Donde los modelos convencionales se rompían, Milei y Reidel derivan resultados exactos en forma cerrada."}
+            {"Milei y Reidel resuelven el problema que la profesión no podía resolver: desarrollan un modelo Ramsey completo con tecnología CES de grado "}
+            <Math tex="\theta > 1" />
+            {", oferta laboral endógena y complementaridad capital-trabajo ("}
+            <Math tex="\sigma < 1" />
+            {"). Donde los modelos convencionales se rompían, derivan la escala mínima viable en forma cerrada — la primera fórmula explícita para este tipo de economía."}
           </InsightCallout>
         </ScrollReveal>
       </SectionArticle>
@@ -493,6 +497,19 @@ export function InvestigacionContent() {
             {"La brecha equivale a 171 veces el consumo del equilibrio bajo. Pero la zona de transición entre ambos es extremadamente angosta. Todo se juega en un margen estrecho — la diferencia entre un país próspero y uno estancado puede parecer sutil desde afuera, pero es abismal en sus consecuencias."}
           </p>
         </ScrollReveal>
+
+        <ScrollReveal variant="fade-up">
+          <div className="my-8 rounded-xl border border-gold/20 bg-gold/[0.03] p-5">
+            <h4 className="m-0 mb-3 font-display text-base text-text-primary">{"El experimento de control: ¿qué pasa sin rendimientos crecientes?"}</h4>
+            <p className="m-0 text-sm text-text-secondary">
+              {"Para aislar el rol de los rendimientos crecientes, el paper repite el ejercicio con "}
+              <Math tex="\theta = 1" />
+              {" (rendimientos constantes), dejando todo lo demás igual — misma complementaridad, mismos parámetros. Resultado: el pliegue desaparece, la escala mínima se desvanece, y la economía tiene un único equilibrio estable. Sin rendimientos crecientes, la complementaridad sola no genera la multiplicidad. Es la combinación de ambos — rendimientos crecientes "}
+              <strong>y</strong>
+              {" complementaridad — lo que crea el acantilado."}
+            </p>
+          </div>
+        </ScrollReveal>
       </SectionArticle>
 
       {/* ── IV. El amplificador ──────────────────────────────── */}
@@ -584,8 +601,20 @@ export function InvestigacionContent() {
 
         <ScrollReveal variant="fade-up">
           <p className="prose-body">
-            {"Esto formaliza una experiencia que muchos países conocen: reformaron sus economías pero no crecieron. No es que las reformas hayan fallado. Es que la recuperación es bidimensional: se necesita simultáneamente cuña baja y capital suficiente."}
+            {"Esto formaliza una experiencia que muchos países conocen: reformaron sus economías pero no crecieron. No es que las reformas hayan fallado. Es que la recuperación es bidimensional: se necesita simultáneamente cuña baja y capital suficiente. Ninguna condición sola produce el salto al equilibrio alto."}
           </p>
+          <p className="prose-body">
+            {"En el benchmark del paper, los umbrales son estrechos. Una reducción del 2,3% en la cuña elimina la multiplicidad opuesta (el pliegue se cierra). Una reducción del 3,1% elimina los últimos estados estacionarios interiores (desaparece la trampa). En términos financieros, esto equivale a una reducción de spread de apenas 27 a 36 puntos básicos. El margen entre supervivencia y catástrofe es angosto — lo que hace que la acumulación de fricciones regulatorias sea tan peligrosa."}
+          </p>
+        </ScrollReveal>
+
+        <ScrollReveal variant="fade-up">
+          <div className="my-8 rounded-xl border-2 border-gold/30 bg-gold/[0.04] p-6">
+            <h4 className="m-0 mb-4 font-display text-lg text-text-primary">{"Argentina: la teoría hecha política"}</h4>
+            <p className="m-0 text-sm leading-relaxed text-text-secondary">
+              {"Argentina en 2023 era un caso de libro de este modelo: más de 67.000 regulaciones vigentes, una presión impositiva asfixiante y décadas de acumulación de cuñas que habían empujado la economía por debajo del acantilado. En dos años, el gobierno de Milei eliminó más de 14.500 regulaciones, bajó impuestos por 2,5 puntos del PBI y generó las condiciones para que el capital volviera a fluir — satisfaciendo las dos condiciones del modelo simultáneamente. El PBI alcanzó un máximo histórico en 2025. En 1895, Argentina tenía el mayor PBI per cápita del mundo. Cien años de colectivismo destruyeron lo que 35 años de libertad construyeron. Este paper demuestra por qué."}
+            </p>
+          </div>
         </ScrollReveal>
 
         <Pullquote cite="Milei & Reidel (2026a)">
@@ -633,12 +662,19 @@ export function InvestigacionContent() {
           <div className="mt-10">
             <h3 className="m-0 mb-4 font-display text-xl text-text-primary">{"De la teoría al instrumento"}</h3>
             <p className="prose-body">
-              {"El primer paper demuestra que la escala mínima existe. Este segundo paper pregunta: ¿qué pasa cuando un regulador, con la mejor de las intenciones, rompe una empresa en pedazos? La respuesta depende de los detalles — y este paper construye el instrumento para evaluarlos."}
+              {"El primer paper demuestra que la escala mínima existe y que pequeñas cuñas la amplifican. Este segundo paper pregunta la pregunta de política que sigue: ¿cuándo es la regulación más dañina? La respuesta no es \"siempre\" — es algo más preciso y más fuerte."}
             </p>
             <p className="prose-body">
-              {"El paper no dice que toda regulación sea mala. Dice algo más preciso: en sectores con rendimientos crecientes y complementariedades densas, la regulación que "}
-              <strong>fragmenta escala productiva</strong>
-              {" es presuntivamente peligrosa salvo que el regulador demuestre que es segura. ¿Por qué? Porque la fragmentación puede empujar la economía por debajo del pliegue del Paper 1 — y una vez ahí, la reversión puede no reconstruir el sistema."}
+              {"La regulación es más peligrosa cuando fragmenta escala productiva en sectores organizados alrededor de rendimientos crecientes, complementariedades densas e irreversibilidad significativa. En esos sectores, la fragmentación puede hacer más que distorsionar incentivos: puede subir la escala mínima por encima de lo viable, eliminar el equilibrio de alta productividad, y hacer que la recuperación sea difícil aun después de revertir la política."}
+            </p>
+            <p className="prose-body">
+              {"Una idea central del paper es que los markups no son un defecto del sistema en sectores con rendimientos crecientes — son el mecanismo que sostiene la operación a escala finita. Con "}
+              <Math tex="\theta > 1" />
+              {", una empresa que enfrenta precios competitivos querría expandirse sin límite (sus ganancias son convexas en escala). El markup es lo que hace posible la operación finita. Eliminarlo vía conducta puede "}
+              <strong>mejorar</strong>
+              {" la viabilidad (baja la escala mínima descentralizada); fragmentar la unidad productiva puede "}
+              <strong>destruirla</strong>
+              {"."}
             </p>
           </div>
         </ScrollReveal>
@@ -836,8 +872,20 @@ export function InvestigacionContent() {
           </div>
         </ScrollReveal>
 
+        <ScrollReveal variant="fade-up">
+          <div className="my-8 rounded-xl border border-gold/20 bg-gold/[0.03] p-5">
+            <h4 className="m-0 mb-3 font-display text-base text-text-primary">{"¿Por qué Chrome importa para el SIA?"}</h4>
+            <p className="m-0 text-sm text-text-secondary">
+              {"Chrome no es un activo periférico de Google. Según los propios materiales de los demandantes, el 78% de las búsquedas en EE.UU. llegan a través de navegadores, el 35% se atribuye a Chrome, y otro 20% fluye a través del default en Chrome descargado por el usuario. Separar Chrome del buscador no es transferir un activo aislado — es romper una interfaz browser-distribución-aprendizaje que los propios demandantes tratan como económicamente integrada."}
+            </p>
+            <p className="m-0 mt-3 text-sm text-text-secondary">
+              {"Bajo el SIA, la pregunta no es si Chrome es legalmente separable (lo es). Es si separarlo preserva las complementariedades productivas que sostienen el régimen de alta productividad. Con la evidencia pública disponible, esa carga de prueba no se cumple bajo supuestos conservadores."}
+            </p>
+          </div>
+        </ScrollReveal>
+
         <InsightCallout icon="🔍">
-          {"La conclusión sobre Chrome es deliberadamente estrecha: no dice que Google debería quedar sin regular. Dice que, en el expediente disponible, la fragmentación estructural no fue demostrada fold-safe respecto de alternativas de menor fragmentación que estaban en el mismo menú."}
+          {"La conclusión sobre Chrome es deliberadamente estrecha: no dice que Google debería quedar sin regular. Dice que, en el expediente disponible, la fragmentación estructural no fue demostrada fold-safe respecto de alternativas de menor fragmentación que estaban en el mismo menú. Un expediente diferente podría dar un resultado diferente — lo que no debería cambiar es el principio de que la carga de prueba recae sobre quien quiere fragmentar."}
         </InsightCallout>
       </SectionArticle>
 
@@ -847,7 +895,10 @@ export function InvestigacionContent() {
 
         <ScrollReveal variant="fade-up">
           <p className="prose-body">
-            {"El test robusto usa cotas conservadoras para cada variable: lower bounds para markup relief y escala retenida, upper bounds para destrucción de complementariedades y presión de cuña:"}
+            {"Las secciones anteriores muestran que la fragmentación puede ser peligrosa. Esta sección establece qué hacer con esa información: una regla de decisión que coloca fold safety como filtro previo al balanceo de bienestar, no como nota al pie."}
+          </p>
+          <p className="prose-body">
+            {"El test robusto usa cotas conservadoras para cada variable — lower bounds para lo que ayuda (markup relief, escala retenida) y upper bounds para lo que daña (destrucción de complementariedades, presión de cuña):"}
           </p>
         </ScrollReveal>
 
